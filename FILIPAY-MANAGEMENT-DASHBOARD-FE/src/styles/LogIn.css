@@ -1,0 +1,354 @@
+body{
+    margin: 0;
+    touch-action: manipulation;
+}
+.divmain{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100%;
+}
+.divform{
+    display: flex;
+    height: 100%;
+    width: 50%;
+
+}
+.divcarousel{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding:1em;
+    justify-content: center;
+}
+#carouselExampleIndicators{
+    width: 100%;
+}
+
+.carouselimg{
+    max-width: 100%;
+    height: 95vh;
+    border-radius: 1em;
+  }
+
+
+  .firstslide{
+    position: absolute;
+    top:20%;
+    left:10%;
+
+  }
+  .carousel-indicators{
+    position: absolute;
+    bottom: 5em;
+}
+.carousel-indicators li {
+    border-radius: 50px;
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.carousel-indicators li.active {
+    width: 30px;
+    height: 10px;
+    margin: 0 3px;
+    transition: all 0.3s ease;
+    background-color: white !important;
+}
+.social-links{
+    display:flex;
+    position: absolute;
+    bottom:1%;
+    justify-content: center;
+    width: 100%;
+    
+}
+.social-links a{
+    margin:1em;
+    background-color: #161d6f;
+    padding: 0.5rem 1em;
+    border-radius: 0.5rem;
+    color:white;
+    font-size: 1.2em;
+}
+.btnlearnmore{
+    position:absolute;
+    bottom:30%;
+    left:10%;
+    background: rgb(2,0,36);
+background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,69,145,1) 0%, rgba(0,195,246,1) 94%, rgba(0,136,199,1) 100%);
+border:none;
+padding:1rem;
+}
+
+.first-text{
+    position: absolute;
+    top:40%;
+    left:10%;
+    width: 80%;
+    color:white;
+}
+.second-text{
+    position: absolute;
+    top:50%;
+    left:10%;
+    color:white;
+}
+/* weather */
+.weatherContainer{
+    display: flex;
+    position: absolute;
+    top:0;
+    width: 100%;
+  
+    flex-direction: row;
+}
+#location{
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size:1vw;
+    width: 220px;
+    color: #ffff;
+    pointer-events: none;
+    
+}
+#location::placeholder{
+    color:white;
+}
+#edit-loc,#get-loc{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color:white;
+    cursor: pointer;
+    font-size:1vw;
+}
+#time{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3vw;
+    font-weight: bold;
+    color:white;
+}
+/* end weather */
+.timenowContainer{
+    position: relative;
+    height: 20vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.276);
+    margin:1em;
+    border-radius: 0.5em;
+    display:flex;
+    flex-direction: column;
+    padding:1em;
+}
+.weathernowContainer{
+    position: relative;
+    height: 20vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.276);
+    margin:1em;
+    border-radius: 0.5em;
+    display:flex;
+    flex-direction: row;
+    padding:1em;
+}
+.ColWeather{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.ColWeatherRain{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+
+}
+#representation{
+    position: absolute;
+    top:-2em;
+}
+#weather{
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top:60%;
+    left:12%;
+    color:white;
+    font-weight: bold;
+    font-size:1vw;
+}
+.raindiv{
+    position: absolute;
+    top:75%;
+    left:12%;
+    color:white;
+    font-weight: bold;
+}
+#date{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1vw;
+}
+#representation{
+    width: 10vw;
+}
+#temp{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:4vw;
+    color:white;
+    font-weight: bold;
+}
+.water-drop{
+    width: 1em;
+}
+#rain{
+    color:white;
+}
+.btnseefullforecast{
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
+    width: 15em;
+font-size:0.6vw;
+border-radius: 1em;
+background: rgb(0,136,199);
+background: linear-gradient(149deg, rgba(0,136,199,1) 0%, rgba(0,157,215,1) 65%);
+}
+
+.DivotherDetails{
+    display: flex;
+    position: absolute;
+    top:22%;
+    width: 100%;
+    flex-direction: row;
+}
+.otherDetailsleft{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.276);
+    height:60vh;
+    margin:1em 0 1em 1em;
+    border-radius: 1em;
+    padding:1em;
+}
+.otherDetailsright{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    
+    height:60vh;
+    margin:1em;
+
+}
+.otherDetailsrightContent{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.276);
+    height:100%;
+ margin-right:1em;
+ 
+    border-radius: 1em;
+    padding: 1em;
+
+}
+.otherDetailsTitle{
+    font-size: 2vw;
+    color:white;
+    font-weight: bold;
+}
+.otherDetailsInfo{
+    color:white;
+    font-size: 0.8vw;
+}
+
+.carousel-control-next,.carousel-control-prev{
+    visibility:hidden;
+}
+.readmorebtn{
+    position: absolute;
+    bottom:1em;
+    right: 1em;
+    padding:0.5em 3em 0.5em 3em;
+    font-size: 0.8vw;
+    border-radius: 0.8em;
+    background: rgb(0,136,199);
+background: linear-gradient(149deg, rgba(0,136,199,1) 0%, rgba(0,157,215,1) 65%);
+}
+/* login form */
+
+    .loginform{
+        display: flex;
+        padding:1em;
+        border: 5px solid whitesmoke;
+        border-radius: 1em;
+        margin:1em;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+
+    }
+    .loginInputs{
+        display: flex;
+   width: 100%;
+        justify-content: left;
+        flex-direction: column;
+    }
+    .signinlabel{
+        font-size: 3em;
+        font-weight: bold;
+        display: flex;
+        justify-content: left;
+   
+        width: 100%;
+
+    }
+    .forgotP{
+        display: flex;
+        justify-content: end;
+
+    }
+   .submitbtn{
+    background-color: #161d6f;
+    height:4em;
+    font-weight: bold;
+    border-radius: 1em;
+   }
+   .msgicon{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    
+   }
+   .msgicon img:hover{
+        cursor: pointer;
+   }
+/* end login form */
+
+@media only screen and (max-width: 1200px) {
+    .divmain{
+        flex-direction: column-reverse;
+    }
+    .divform{
+        width: 100%;
+    }
+    .divcarousel{
+       display: none;
+    }
+  }
