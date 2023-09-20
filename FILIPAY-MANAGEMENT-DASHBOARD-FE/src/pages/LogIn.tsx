@@ -37,7 +37,7 @@ export default function LogIn() : JSX.Element {
                                 statusMessage=""
                                 title="Email address"
                                 value={inputEmail.value}
-                                />
+                        />
                             
 
                   
@@ -54,7 +54,7 @@ export default function LogIn() : JSX.Element {
                                 statusMessage=""
                                 title="Password"
                                 value={inputEmail.value}
-                                />
+                          />
                 </div>
         <DefaultButton/>  
     </form>

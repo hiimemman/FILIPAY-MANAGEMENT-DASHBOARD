@@ -9,7 +9,8 @@ export default {
 
         backgroundColor: {
           'primary': '#161d6f', 
-          'secondary': '#ffed4a', 
+          'secondary': '#ffed4a',
+          'navBar' : '#0369a1' 
         },
         borderColor: {
           'primary' : '#007bff',
