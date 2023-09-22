@@ -28,14 +28,20 @@ export default function NavList(props : IListProps) : JSX.Element {
     return(
         <>
           <li>
-          
-            <a onClick ={() => navigate(props.url)}className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${activePage === props.url ? 'border-4 border-blue-500 bg-blue-800' : ''}`}>
+            <a
+                onClick={() => navigate(props.url)}
+                className={`relative flex items-center p-2 text-neutral-100 dark:text-white hover:bg-gray-100 hover:text-black dark:hover:bg-gray-700 group ${
+                activePage === props.url ? 'bg-indigo-700 pl-4' : ''
+                }`}
+            >
+                {activePage === props.url && (
+                <div className="absolute top-0 left-0 h-full bg-white w-2 hover: rounded-e-sm"></div>
+                )}
+                {props.iconUrl}
+                <span className="ml-3">{props.pageName}</span>
                 
-               {props.iconUrl}
-               
-               <span className="ml-3">{props.pageName}</span>
             </a>
-           </li>
+          </li>
         </>
     )
     

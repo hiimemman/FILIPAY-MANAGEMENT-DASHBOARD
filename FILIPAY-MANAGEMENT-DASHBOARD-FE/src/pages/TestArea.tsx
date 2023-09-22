@@ -1,5 +1,6 @@
 import Carousel from "../components/Carousel";
 import HeaderCard from "../components/HeaderCard";
+import PaginationTest from "../components/PaginationTest";
 
 
 export default function TestArea(){
@@ -8,6 +9,7 @@ export default function TestArea(){
         <>
         <Carousel />
      {/* <HeaderCard title ={"Test"}/> */}
+     {/* <PaginationTest /> */}
         </>
     )
 

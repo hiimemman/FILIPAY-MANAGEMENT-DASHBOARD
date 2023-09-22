@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    
     extend: {
 
         backgroundColor: {
@@ -32,6 +33,12 @@ export default {
             "Segoe UI Emoji",
             "Segoe UI Symbol",
           ],
+        },
+        gradientColors: {
+          'custom': {
+            'start': '#FFD700', // Start color
+            'end': '#161d6f',   // End color
+          },
         },
 
     },

@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { BsMenuButtonWide, BsFillPersonFill, BsFillCarFrontFill, BsTruck, BsFillPeopleFill, BsJournalBookmark, BsJournalBookmarkFill, BsEnvelopeAt, BsShieldCheck, BsPersonFillLock, BsPersonVcard, BsHeadset } from 'react-icons/bs';
 import NavList, { ProfileBoxList } from "./NavList";
+import NotificationBell from "./NotificationBell";
 interface NavBarProps {
     children: ReactNode;
 }
@@ -76,7 +77,7 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
     
     return(
         <>
-        <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-primary dark:border-gray-700">
+        <nav className="fixed top-0 z-50 w-full bg-gradient-to-r from-blue-900 to-[#161d6f] border-b border-gray-200 dark:bg-primary dark:border-gray-700">
   <div className="px-3 py-3 lg:px-5 lg:pl-3">
     <div className="flex items-center justify-between">
       <div className="flex items-center justify-start">
@@ -88,19 +89,23 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
          </button>
          
              <a href= "#" className="flex ml-2 md:mr-24">
-                <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Dashboard Management</span>
+                <span className="self-center text-white text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Dashboard Management</span>
              </a>
          
         
       </div>
     
+    
+
 <div className="z-50 flex items-center relative ml-3">
+<NotificationBell />
   <div>
+    
     <button type="button" className="flex items-center text-sm bg-gray rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" onClick={handleBtnProfileBox}>
         <img className="w-8 h-8 rounded-full mr-2" src={userInformation.imageUrl} alt="user photo" />
-        <p className="text-sm text-gray-900 dark:text-white flex-grow">{userInformation.firstname + " " + userInformation.middlename + " " + userInformation.lastname}</p>
+        <p className="text-sm text-white dark:text-white flex-grow">{userInformation.firstname + " " + userInformation.middlename + " " + userInformation.lastname}</p>
     </button>
-
+    
 
     {isOpenProfileBox && (
       <div className="absolute z-50 right-0 mt-2 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
@@ -134,9 +139,9 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
   </div>
 </nav>
 
-<aside id="logo-sidebar" className= {isBurgerClicked ? ("fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-gray-700") : ("fixed top-0 left-0 z-40 w-64 h-screen pt-20 bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-gray-700")} aria-label="Sidebar">
-   <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-primary">
-    
+<aside id="logo-sidebar" className= {isBurgerClicked ? ("fixed top-0 left-0 z-40 w-64 h-screen pt-0 transition-transform -translate-x-full bg-primary border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-gray-700") : ("fixed top-0 left-0 z-40 w-64 h-screen pt-0 bg-primary border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-gray-700")} aria-label="Sidebar">
+   <div className="h-full px-0 m1 pb-4 overflow-y-auto bg-gradient-to-b from-blue-900 to-[#161d6f] dark:bg-primary">
+     <div className="mt-20"></div>
       <ul className="space-y-2 font-medium">
 
         {NavBarPages.map((page) =>{
