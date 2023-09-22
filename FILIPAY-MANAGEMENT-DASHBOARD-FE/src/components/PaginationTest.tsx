@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './MorphingPagination.css'; // Import your CSS file
+import '../styles/MorphingPagination.css'; // Import your CSS file
 
 export default function PaginationTest(props : any){
     const [activeButton, setActiveButton] = useState(0);
