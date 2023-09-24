@@ -4,6 +4,7 @@
 import { FormEvent } from 'react';
 import DefaultButton from '../components/Buttons'
 import Carousel from '../components/Carousel';
+import LoginForm from '../components/LogInForm';
 
 
 const defaultFont = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';

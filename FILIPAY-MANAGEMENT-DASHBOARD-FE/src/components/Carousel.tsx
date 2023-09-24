@@ -1,32 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import PaginationTest from './PaginationTest';
 
-
 export default function Carousel(): JSX.Element {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [screenHeight, setScreenHeight] = useState<number>(window.innerHeight);
+
+  useEffect(() => {
+    // Update the screen height when it changes
+    const handleResize = () => {
+      setScreenHeight(window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const settings = {
     customPaging: function (i: number): JSX.Element {
-      return (
-            // <div className={`${i === currentSlide ? 'w-10 h-4 bg-gray-400 mr-10' : 'w-4 h-4 bg-white mr-0'} left-0 rounded-full  hover:bg-white focus:outline-none focus:bg-gray-600`} style ={{marginTop: '-50px'}}></div>
-
-            <>
-          
-          
-            </>
-      );
+      return <></>;
     },
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1, // Number of slides to show at once
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     beforeChange: (current: number, next: number) => {
-      setCurrentSlide(next); // Update the current slide when it changes
+      setCurrentSlide(next);
     },
     responsive: [
       {
@@ -45,33 +49,35 @@ export default function Carousel(): JSX.Element {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto mt-4">
+    <div className="hidden md:block md:w-3/5 overflow-hidden relative">
       <Slider {...settings}>
         <div>
           <img
-            src="https://as2.ftcdn.net/v2/jpg/05/32/23/63/1000_F_532236382_GYXU7WpBSnmeqE4CtoZrLDOJQo9arDVq.jpg"
+            src="http://filipworks.com/fmd/assets/background-image.JPG"
             alt="Image 1"
-            className="rounded-lg"
+            className="w-full h-3/5 object-cover object-center rounded-lg"
           />
         </div>
         <div>
           <img
-            src="https://as2.ftcdn.net/v2/jpg/05/32/23/63/1000_F_532236382_GYXU7WpBSnmeqE4CtoZrLDOJQo9arDVq.jpg"
+            src="http://filipworks.com/fmd/assets/background-image.JPG"
             alt="Image 2"
-            className="rounded-lg"
+            className="w-full h-3/5 object-cover object-center rounded-lg"
           />
         </div>
         <div>
           <img
-            src="https://as2.ftcdn.net/v2/jpg/05/32/23/63/1000_F_532236382_GYXU7WpBSnmeqE4CtoZrLDOJQo9arDVq.jpg"
+            src="http://filipworks.com/fmd/assets/background-image.JPG"
             alt="Image 3"
-            className="rounded-lg"
+            className="w-full h-3/5 object-cover object-center rounded-lg"
           />
         </div>
         {/* Add more slides as needed */}
       </Slider>
 
-      <PaginationTest currentSlide = {currentSlide} />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <PaginationTest currentSlide={currentSlide} />
+      </div>
     </div>
   );
 }
