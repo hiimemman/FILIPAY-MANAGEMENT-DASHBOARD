@@ -49,28 +49,40 @@ export default function Carousel(): JSX.Element {
   };
 
   return (
-    <div className="hidden md:block md:w-3/5 overflow-hidden relative">
+    <div className="w-full overflow-hidden relative mt-4 mr-7">
       <Slider {...settings}>
         <div>
           <img
             src="http://filipworks.com/fmd/assets/background-image.JPG"
             alt="Image 1"
-            className="w-full h-3/5 object-cover object-center rounded-lg"
-          />
+            // className="w-full h-3/5 object-cover object-center rounded-lg"
+          style={{
+            width: '100%',
+            height: '95vh',
+            borderRadius: '1em',
+          }}/>
         </div>
         <div>
           <img
             src="http://filipworks.com/fmd/assets/background-image.JPG"
             alt="Image 2"
-            className="w-full h-3/5 object-cover object-center rounded-lg"
-          />
+            // className="w-full h-3/5 object-cover object-center rounded-lg"
+            style={{
+              width: '100%',
+              height: '95vh',
+              borderRadius: '1em',
+            }}/>
         </div>
         <div>
           <img
             src="http://filipworks.com/fmd/assets/background-image.JPG"
             alt="Image 3"
-            className="w-full h-3/5 object-cover object-center rounded-lg"
-          />
+            // className="w-full h-3/5 object-cover object-center rounded-lg"
+            style={{
+              width: '100%',
+              height: '95vh',
+              borderRadius: '1em',
+            }}/>
         </div>
         {/* Add more slides as needed */}
       </Slider>

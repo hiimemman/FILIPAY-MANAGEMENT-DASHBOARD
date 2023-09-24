@@ -1,9 +1,11 @@
 html{
-    background-color: whitesmoke;
+    background-color: transparent;
+    overflow: hidden;
 }
 body{
     margin: 0;
     touch-action: manipulation;
+    overflow: hidden;
 }
 .divmain{
     display: flex;
