@@ -17,67 +17,68 @@ import { useDemoData } from '@mui/x-data-grid-generator';
 
 const columns: GridColDef[] = [
     { field: 'lastname', 
-    headerName: 'Last Name', 
+    headerName: 'LAST NAME', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
+   
   },
   { field: 'firstname', 
-    headerName: 'First Name', 
+    headerName: 'FIRST NAME', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
   },
   { field: 'middlename', 
-    headerName: 'Middle Name', 
+    headerName: 'MIDDLE NAME', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
   },
   {field: 'contact', 
-  headerName: 'Contact Number', 
+  headerName: 'CONTACT NUMBER', 
   width: 180, 
   headerClassName: 'super-app-theme--header',
   editable: true,
   },
   { field: 'email', 
-    headerName: 'Email Address', 
+    headerName: 'EMAIL ADDRESS', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
   },
   { field: 'birth_date', 
-    headerName: 'Birthdate', 
+    headerName: 'BIRTHDATE', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
   },
   { field: 'cooperative', 
-    headerName: 'Transport Cooperative', 
+    headerName: 'TRANSPORT COOPERATIVE', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
   },
   { field: 'classification', 
-    headerName: 'Classification', 
+    headerName: 'CLASSIFICATION', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
   },
   { field: 'card_uid', 
-    headerName: 'Card UI', 
+    headerName: 'CARD UI', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
   },
   { field: 'card_sn', 
-    headerName: 'Card SN', 
+    headerName: 'CARD SN', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
   },
   { field: 'status', 
-    headerName: 'Status', 
+    headerName: 'STATUS', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
@@ -91,7 +92,7 @@ const columns: GridColDef[] = [
       }
   },
   { field: 'action', 
-    headerName: 'Action', 
+    headerName: 'ACTION', 
     width: 180, 
     headerClassName: 'super-app-theme--header',
     editable: true,
@@ -112,6 +113,7 @@ const columns: GridColDef[] = [
         card_uid: "test",
         card_sn: "test",
         status:"Active"
+
     },
     {
         id:2, 
@@ -190,6 +192,17 @@ export function Client(){
 
     },[])
 
+    const styles = (theme : any) => ({
+      activeSortIcon: {
+        opacity: 1,
+        color : 'blue',
+      },
+      inactiveSortIcon: {
+        opacity: 0.4,
+        color : 'green',
+      },
+    });
+
     return(<>
     <NavBar>
     <HeaderCard  title="Client"/>
@@ -209,12 +222,10 @@ export function Client(){
                 quickFilterProps: {
                     variant: 'filled',
                     size: "medium"
-                }
-                },
+                },  
+              },
             }}
-            sx={{
-            
-            }}
+           
             />
         </Box>
         </Paper>
