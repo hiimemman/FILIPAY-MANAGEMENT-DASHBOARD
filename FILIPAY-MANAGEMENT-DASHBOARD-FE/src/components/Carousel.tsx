@@ -194,7 +194,8 @@ export default function Carousel(): JSX.Element {
               ></div>
             ))}
           </div>
-        <CarouselLinks />
+      
+          <CarouselLinks />
        
       </div>
     </div>

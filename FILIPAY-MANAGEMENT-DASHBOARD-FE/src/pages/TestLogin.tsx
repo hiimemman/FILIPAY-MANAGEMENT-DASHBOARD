@@ -1,29 +1,62 @@
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
-// import '../styles/LogIn.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../styles/LogIn.css'
 import { FormEvent } from 'react';
 import DefaultButton from '../components/Buttons'
 import Carousel from '../components/Carousel';
-import '../styles/LogIn.css'
+import {useState, useEffect} from 'react';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const defaultFont = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 
-async function handleSubmitLoggedIn(event : FormEvent){
 
-    event.preventDefault();
-
-    try{
-
-        
-
-    }catch(e){
-
-    }
-
-}
 
 export default function TestLogin() : JSX.Element {
+    const [username, setUsername] = useState(''); 
+    const [password, setPassword] = useState('');
+
+    const navigate = useNavigate();
+
+    useEffect(() =>{
+
+        return () =>{}
+
+    },[username, password])
+
+    async function handleSubmitLoggedIn(event : FormEvent){
+
+        event.preventDefault();
+    
+        try{
+
+            const request = await axios.post('https://fms.dltbbus.com.ph/fmi/data/v1/databases/dltb%20company%20database/sessions', {}, {
+                auth: {
+                    username: username,
+                    password: password,
+                }
+            })
+            
+            const response = await request.data;
+
+            console.log(response)
+
+            if(response.messages[0].message === "OK"){
+                console.log(response.response.token)
+                localStorage.setItem('token', response.response.token)
+                if(localStorage.getItem('token')){
+                    navigate('/employee')
+                }
+            }
+    
+        }catch(e){
+            console.error("Error in login ",e );
+        }
+    
+    }
+
+    
 
     return(
         <>
@@ -42,7 +75,7 @@ export default function TestLogin() : JSX.Element {
             padding: '1em',
             border: '5px solid whitesmoke',
             height: 'auto', 
-            }} >
+            }} onSubmit={handleSubmitLoggedIn} >
                         <img src={import.meta.env.VITE_ASSET_URL+"/assets/Filipay-logo.png"} alt=""  />
                       
                     
@@ -54,21 +87,20 @@ export default function TestLogin() : JSX.Element {
                             <div className="form-group" style={{}}>
                                 <label htmlFor="exampleInputEmail1" style={{marginBottom: '0.5rem', 
                                 
-                                fontFamily:defaultFont}}>Email address</label>
-                                <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your email" required
+                                fontFamily:defaultFont}}>Username</label>
+                                <input type="text" className="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter your username" required
                                 style={{marginBottom: '1em'}}
+                                onChange={(event) => setUsername(event.target.value)}
                                 /> 
                               
-                              {/* <label className="block">
-                            <span className="block text-sm font-medium text-black" style ={{fontFamily: defaultFont}}>Email address</span>
-                            <input className="border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 w-full contrast-more:placeholder-slate-500" required/>
-                        </label> */}
+                    
 
                               </div>
                               <div className="form-group" style={{marginBottom: '16px'}}>
                                 <label htmlFor="password"  style={{marginBottom: '0.5rem', fontFamily:defaultFont}} >Password</label>
                                 <input type="password" className="form-control" id="password" name="password" placeholder="Enter your password"
                                 style={{marginBottom: '1em'}}
+                                onChange={(event) => setPassword(event.target.value)}
                                 />
                                 <div className='flex justify-between' >
 

@@ -5,18 +5,20 @@ import TestLogin from "./pages/TestLogin";
 import TestArea from "./pages/TestArea";
 import { Dashboard } from "./pages/Dashboard";
 import { Client } from "./pages/Client";
-
+import  './styles/LogIn.css'
+import { Employee } from "./pages/Employee";
 function App() {
  
   return (
     <>
       <Router>
         <Routes>
-          <Route path ="/login" element ={<LogIn /> }/>
+          <Route path ="/testarea" element ={<LogIn /> }/>
           <Route path ="/dashboard" element ={<Dashboard />} />
+          <Route path ="/employee" element = {<Employee />}/>
           <Route path="/client" element ={<Client />} />
-          <Route path ="/test/login" element = {<TestLogin />} />
-          <Route path ="/test" element = {<TestArea />}/>
+          <Route path ="/login" element = {<TestLogin />} />
+          <Route path ="/test" element = {<TestLogin />}/>
         </Routes>
       </Router>
     </>

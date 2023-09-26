@@ -206,12 +206,13 @@ export function Client(){
     return(<>
     <NavBar>
     <HeaderCard  title="Client"/>
-     <div style={{ height: '400px', width: '100%', marginTop: '10px' }}>
+     <div style={{ width: '100%', marginTop: '10px' }}>
         <Paper>
             <Box sx = {{
             '& .super-app-theme--header': {
             backgroundColor: '#161d6f',
             color:'white',
+            width: '400'
             },
         }}>
             <DataGrid rows={clientTableRows} columns={columns}

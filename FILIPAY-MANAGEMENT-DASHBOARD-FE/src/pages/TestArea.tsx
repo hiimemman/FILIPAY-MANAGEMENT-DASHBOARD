@@ -11,7 +11,7 @@ export default function TestArea(){
         {/* <Carousel />
      <HeaderCard title ={"Test"}/> */}
      {/* <PaginationTest /> */}
-     <CarouselLinks />
+     {/* <CarouselLinks /> */}
         </>
     )
 
