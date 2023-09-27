@@ -174,30 +174,19 @@ export function Employee(){
       },
     });
 
-    const config = {
-        headers :{
-            Authorization : `Bearer caec50331ccc203662ba4babeb7442fb26dcae36c0785790e055`
-        }
-    }
-
-    const bodyParameters = {
-        "query": [{"designation" : "*"}],
-        "sort": [{"fieldName": "lastName", "sortOrder": "ascend"}],
-        "limit": "10000"
-    }
-    console.log(config)
+  
     async function GetAllEmployees(){
 
         try{
-            const request = await axios.post("https://fms.dltbbus.com.ph/fmi/data/v1/databases/dltb%20company%20database/layouts/dltb_id/_find", bodyParameters, config
-            )
+          
+          const request = await axios.get('http://localhost:3000/api/v1/sync/employee')
             
             const response = await request.data;
     
-            // console.log("THIS IS THE RESPONSE = "+ JSON.stringify(response.response.data))
+            console.log("THIS IS THE RESPONSE = "+ JSON.stringify(response))
 
             let row = 0;
-            let newRows = response.response.data.map((employee : any) =>{
+            let newRows = response.employee_data.map((employee : any) =>{
                 row = row + 1;
                 console.log("Employee ["+row+"] : "+ JSON.stringify(employee.fieldData))
                 return employee.fieldData = {...employee.fieldData, "id": employee.fieldData.empNo};

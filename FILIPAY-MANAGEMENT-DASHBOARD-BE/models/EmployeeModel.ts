@@ -21,18 +21,18 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         default: '',
         index: true,
-        required: true,
+        required: false,
     },
 
     nameSuffix:{
         type: String,
         default: '',
         index: true,
-        required: true,
+        required: false,
     },
 
     empNo:{
-        type: String,
+        type: Number,
         default: '',
         index: true,
         required: true,
@@ -42,14 +42,14 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         default: '',
         index: true,
-        required: true,
+        required: false,
     },
 
     empType:{
         type: String,
         default: '',
         index: true,
-        required: true,
+        required: false,
     },
 
     idName:{
@@ -63,51 +63,51 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         default: '',
         index: true,
-        required: true,
+        required: false,
     },
 
     idPicture:{
         type: String,
         default:'',
         index: true,
-        required: true,
+        required: false,
     },
 
     idSignature:{
         type: String,
         default: '',
         index: true,
-        required: true,
+        required: false,
     },
 
     JTI_RFID:{
         type: String,
         default: '',
         index: true,
-        required: true
+        required: false
     },
 
     accessPrivileges:{
         type: String,
         default: '',
         index: true,
-        required: true,
+        required: false,
     },
 
     JTI_RFID_RequestDate:{
         type: String,
         default: '',
         index: true,
-        required: true
+        required: false
     }
 });
 
 const employeeDataSchema = new mongoose.Schema({
-    recordId: {
-        type: Number
+        recordId: {
+        type: String
        },
        modId:{
-        type: Number
+        type: String
        },
        fieldData: [employeeSchema],
 })

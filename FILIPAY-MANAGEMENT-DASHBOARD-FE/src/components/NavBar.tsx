@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { BsMenuButtonWide, BsFillPersonFill, BsFillCarFrontFill, BsTruck, BsFillPeopleFill, BsJournalBookmark, BsJournalBookmarkFill, BsEnvelopeAt, BsShieldCheck, BsPersonFillLock, BsPersonVcard, BsHeadset, BsPersonWorkspace } from 'react-icons/bs';
+import { BsMenuButtonWide, BsFillPersonFill, BsFillCarFrontFill, BsTruck, BsFillPeopleFill, BsJournalBookmark, BsJournalBookmarkFill, BsEnvelopeAt, BsShieldCheck, BsPersonFillLock, BsPersonVcard, BsHeadset, BsPersonWorkspace, BsFiles } from 'react-icons/bs';
 import NavList, { ProfileBoxList } from "./NavList";
 import NotificationBell from "./NotificationBell";
 interface NavBarProps {
@@ -24,17 +24,18 @@ interface IUserInformation{
         
         {id: 1, pageName: "Dashboard", url: "/dashboard", iconUrl: <BsMenuButtonWide />},
         {id: 2, pageName: "Employee", url: "/employee", iconUrl: <BsPersonWorkspace />},
-        {id: 3, pageName: "Client", url: "/client", iconUrl: <BsFillPersonFill />},
-        {id: 4, pageName: "Driver", url: "/driver", iconUrl: <BsFillCarFrontFill />},
-        {id:5, pageName: "Rider", url:"/rider", iconUrl:<BsTruck />},
-        {id:6, pageName: "Distributor/Retailer", url:"/distributor", iconUrl: <BsFillPeopleFill />},
-        {id:7, pageName: "Accounting System", url:"/accounting-system", iconUrl: <BsJournalBookmark /> },
-        {id:8, pageName: "KYC" , url:"/kyc", iconUrl: <BsJournalBookmarkFill />},
-        {id:9, pageName: "Email Template", url:"/email-template" , iconUrl: <BsEnvelopeAt />},
-        {id:10, pageName: "Privacy Policy", url :"/privacy-policy", iconUrl: <BsShieldCheck />},
-        {id:11, pageName: "Admin/Sub-Admin Controller", url :"/admin-controller", iconUrl: <BsPersonFillLock />},
-        {id:12, pageName: "Admin Activity", url : "/admin-activity", iconUrl: <BsPersonVcard />},
-        {id:13, pageName: "Support" , url :"/support", iconUrl: <BsHeadset />}
+        {id: 3, pageName: "TOR Records", url: "/tor", iconUrl: <BsFiles />},
+        // {id: 3, pageName: "Client", url: "/client", iconUrl: <BsFillPersonFill />},
+        // {id: 4, pageName: "Driver", url: "/driver", iconUrl: <BsFillCarFrontFill />},
+        // {id:5, pageName: "Rider", url:"/rider", iconUrl:<BsTruck />},
+        // {id:6, pageName: "Distributor/Retailer", url:"/distributor", iconUrl: <BsFillPeopleFill />},
+        // {id:7, pageName: "Accounting System", url:"/accounting-system", iconUrl: <BsJournalBookmark /> },
+        // {id:8, pageName: "KYC" , url:"/kyc", iconUrl: <BsJournalBookmarkFill />},
+        // {id:9, pageName: "Email Template", url:"/email-template" , iconUrl: <BsEnvelopeAt />},
+        // {id:10, pageName: "Privacy Policy", url :"/privacy-policy", iconUrl: <BsShieldCheck />},
+        // {id:11, pageName: "Admin/Sub-Admin Controller", url :"/admin-controller", iconUrl: <BsPersonFillLock />},
+        // {id:12, pageName: "Admin Activity", url : "/admin-activity", iconUrl: <BsPersonVcard />},
+        // {id:13, pageName: "Support" , url :"/support", iconUrl: <BsHeadset />}
     ]
 
     const ProfileDropdown = [
