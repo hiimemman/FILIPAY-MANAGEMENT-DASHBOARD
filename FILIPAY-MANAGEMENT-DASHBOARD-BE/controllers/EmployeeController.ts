@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Request, Response } from "express";
 
 import { EmployeeEndSessionService, EmployeeGenerateSessionService } from "../services/SessionService";
@@ -11,7 +10,7 @@ let employeeToken : string | boolean = false
 
 
 export async function GetAllEmployeesController(request: Request, response: Response){
- 
+    const responseDate = GetCurrentDateSTR();
     try{
 
         const requestForToken = await EmployeeGenerateSessionService();
@@ -28,59 +27,117 @@ export async function GetAllEmployeesController(request: Request, response: Resp
         }
 
 
-        const currentDate = GetCurrentDateSTR()
-        response.status(200).json({"datetime" : currentDate, "employee_data" : responseGetEmployeeFromOtherServer})
+        response.status(200).json({messages : [{
+            code: "0",
+            message: "OK",
+            dateTime: responseDate,
+        }],
+        response:[responseGetEmployeeFromOtherServer]
+ });
+
     }catch(e){
         console.error(e)
-        response.status(500).json({error: ""+e})
+
+        response.status(500).json({messages : [{
+            code: "212",
+            message: "Error in getting employees: "+e,
+            dateTime: responseDate,
+        }],
+        response:[{}]
+ });
+        
     }
     
 }
 
 export async function GetAllEmployeesFilipayServerController(request : Request, response: Response){
-
+    const responseDate = GetCurrentDateSTR();
     try{
         const currentDate = GetCurrentDateSTR()
         const requestForEmployeeList = await GetAllEmployee();
-        console.log(requestForEmployeeList)
-        response.status(200).json({"datetime" : currentDate, "employee_data" : requestForEmployeeList})
+       
+        response.status(200).json({messages : [{
+            code: "0",
+            message: "OK",
+            dateTime: responseDate,
+        }],
+        response:[requestForEmployeeList]
+ });
+
     }catch(e){
-        console.error(e)
-        response.status(500).json({error: ""+e})
+        response.status(500).json({messages : [{
+            code: "212",
+            message: "Error in getting all employees: "+e,
+            dateTime: responseDate,
+        }],
+        response:[{}]
+ });
     }
 
 }
 
 export async function AddNewEmployeeFilipayServerController(request : Request, response : Response){
-    const currentDate = GetCurrentDateSTR();
+    const responseDate = GetCurrentDateSTR();
     try{
 
         
         const newEmployee = await AddNewEmployee(request.body);
-        
-        response.status(200).json({"datetime" : currentDate, "message" : "Added succesfully!"})
+
+        response.status(200).json({messages : [{
+            code: "0",
+            message: "OK",
+            dateTime: responseDate,
+        }],
+        response:[{}]
+ });
 
     }catch(e){
-        response.status(500).json({"datetime" : currentDate, "message" : "Adding new employee failed!", errorMessage: ""+e})
+        response.status(500).json({messages : [{
+            code: "212",
+            message: "Error in generating token: "+e,
+            dateTime: responseDate,
+        }],
+        response:[{}]
+ });
     }
 
 }
 
 export async function UpdateEmployeeFilipayServerController(request: Request, response: Response){
 
-    const currentDate = GetCurrentDateSTR();
+    const responseDate = GetCurrentDateSTR();
 
     try{
         console.log(JSON.stringify(request.body))
-        const updateEmployee = await UpdateEmployee(request.body.id, request.body );
+        const updateEmployee = await UpdateEmployee(request.body._id, request.body );
 
         if(updateEmployee === false){
-            response.status(201).json({"datetime": currentDate, "message" : "Modifying employee failed! "})
+
+            response.status(201).json({messages : [{
+                code: "212",
+                message: "Modifying employee failed!",
+                dateTime: responseDate,
+            }],
+            response:[{}]
+     });
+
         }
 
-        response.status(200).json({"message": "added succesfully!"})
+        response.status(500).json({messages : [{
+            code: "0",
+            message: "OK",
+            dateTime: responseDate,
+        }],
+        response:[{}]
+        });
     }catch(e){
-        response.status(500).json({"datetime" : currentDate, "message" : "Updating employee failed! ", errorMessage: ""+e})
+        response.status(500).json({messages : [{
+            code: "212",
+            message: "Error in modifying employee information: "+e,
+            dateTime: responseDate,
+        }],
+        response:[{}]
+ });
     }
 
 }

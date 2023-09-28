@@ -22,8 +22,9 @@ import EmployeeRouter from "./routes/EmployeeRoutes";
 // DATABASE
 ///////////////////////////
 import connectToMongoDB from './databases/DbConnection';
-
-
+import AuthRouter from "./routes/AuthenticationRoutes";
+import CardUserRouter from "./routes/CardUserRoutes";
+import AuthTokenRouter from "./routes/AuthorizationTokenRoute";
 
 
 //////////////////////////////////////////////////
@@ -52,8 +53,13 @@ app.use(cors({
 // USED ROUTES
 /////////////////////
 
-app.use('/api/v1', EmployeeRouter)
+app.use('/api/v1', EmployeeRouter);
 
+app.use('/api/v1/', AuthRouter);
+
+app.use('/api/v1', CardUserRouter);
+
+app.use('/api/v1', AuthTokenRouter);
 
 /////////////////////////
 // DATABASE CONNECTION
