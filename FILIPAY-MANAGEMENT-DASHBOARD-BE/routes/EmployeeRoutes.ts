@@ -9,10 +9,10 @@ const EmployeeRouter = Router();
 // get and also sync to our server
 EmployeeRouter.get('/sync/employee', CheckTokenMiddleware, GetAllEmployeesController);
 
-EmployeeRouter.post('/filipay/employee' ,CheckTokenMiddleware,AddNewEmployeeFilipayServerController)
+EmployeeRouter.post('/employee' ,CheckTokenMiddleware,AddNewEmployeeFilipayServerController)
 
-EmployeeRouter.get('/filipay/employee', CheckTokenMiddleware,GetAllEmployeesFilipayServerController);
+EmployeeRouter.get('/employee', CheckTokenMiddleware,GetAllEmployeesFilipayServerController);
 
-EmployeeRouter.put('/filipay/employee',CheckTokenMiddleware, UpdateEmployeeFilipayServerController)
+EmployeeRouter.put('/employee',CheckTokenMiddleware, UpdateEmployeeFilipayServerController)
 
 export default EmployeeRouter;

@@ -9,6 +9,6 @@ const AuthRouter = Router();
 ////////////////////////////
 
 
-AuthRouter.post('/filipay/auth',  AuthenticationController)
+AuthRouter.post('/auth',  AuthenticationController)
 
 export default AuthRouter;

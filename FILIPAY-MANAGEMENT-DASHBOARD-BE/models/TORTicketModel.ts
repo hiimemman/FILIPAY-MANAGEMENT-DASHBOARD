@@ -1,172 +1,192 @@
 import mongoose from "mongoose"
 
-const torTicketSchema = new mongoose.Schema({
+const torSchema = new mongoose.Schema({
 
-    UUID:{
-        type: String,
-        index: true,
-        default: ""
-    },
+ UUID:{
+    type: String,
+    index: true,
+    unique: true,
+ },
 
-    device_id:{
-        type: String,
-        index:true,
-        default:"",
-    },
+ device_id:{
+    type: String,
+    index: true,
+    default: ""
+},
 
-    control_no:{
-        type: String,
-        index: true,
-        default:""
-    },
+control_no:{
+    type: String,
+    index: true,
+    default: ""
+},
 
-    tor_no:{
-        type: String,
-        index: true,
-        default:""
-    },
+tor_no:{
+    type: String,
+    index: true,
+    default: ""
+},
 
-    date_of_trip:{
-        type: String,
-        index: true,
-        default:""
-    },
+date_of_trip:{
+    type: String,
+    index: true,
+    default:""
+},
 
-    bus_no:{
-        type:Number,
-        index: true,
-        default: 0,
-    },
+bus_no:{
+    type: String,
+    index: true,
+    default: ""
+},
 
-    route:{
-        type: String,
-        index: true,
-        default:""
-    },
+route:{
+    type:String,
+    index: true,
+    default:""
+},
 
-    route_code:{
-        type:String,
-        index: true,
-        default:"AAAA-0000-1111-BBBB"
-    },
+route_code:{
+    type: String,
+    index: true,
+    default:""
+},
 
-    bound:{
-        type: String,
-        index: true,
-        default:"SOUTH"
-    },
+bound:{
+    type: String,
+    index: true,
+    default: ""
+},
 
-    trip_no:{
-        type: Number,
-        index: true,
-        default: 5
-    },
+trip_no:{
+    type: Number,
+    index: true,
+    default:0
+},
 
-    ticket_no:{
-        type: String,
-        index: true,
-        default:""
-    },
+ticket_no:{
+    type: String,
+    index: true,
+    default: ""
+},
 
-    ticket_type:{
-        type: String,
-        index: true,
-        default:"S"
-    },
+ticket_type:{
+    type:String,
+    index: true,
+    default:""
+},
 
-    ticket_status:{
-        type: String,
-        index: true,
-        default:"",
-    },
+ticket_status:{
+    type: String,
+    index: true,
+    default:""
+},
 
-    timestamp:{
-        type: String,
-        index: true,
-        default: ""
-    },
+timestamp:{
+    type: Date,
+    index: true,
+    default: Date.now,
+},
 
-    from_place:{
-        type: String,
-        index: true,
-        default: ""
-    },
+from_place:{
+    type: String,
+    index: true,
+    default:""
+},
 
-    to_place:{
-        type: String,
-        index: true,
-        default:""
-    },
+to_place:{
+    type: String,
+    index: true,
+    default:""
+},
 
-    from_km:{
-        type: Number,
-        index: true,
-        default: 0
-    },
+from_km:{
+    type: Number,
+    index: true,
+    default: 0
+},
 
-    to_km:{
-        type: Number,
-        index: true,
-        default:0
-    },
+to_km:{
+    type: Number,
+    index: true,
+    default: 0
+},
 
-    km_run:{
-        type: Number,
-        index: true,
-        default: 0
-    },
+km_run:{
+    type: Number,
+    index: true,
+    default: 0
+},
 
-    fare:{
-        type: Number,
-        index: true,
-        default: 0
-    },
-    card_no:{
-        type: Number,
-        index: true,
-        default: 0
-    },
+fare:{
+    type: Number,
+    index: true,
+    default: 0
+},
 
-    status:{
-        type: String,
-        index: true,
-        default: ""
-    },
+card_no:{
+    type: String,
+    index: true,
+    default:""
+},
 
-    lat:{
-        type: String,
-        index: true,
-        default:""
-    },
-    
-    long:{
-        type: String,
-        index: true,
-        default:""
-    },
+status:{
+    type: String,
+    index: true,
+    default:""
+},
 
-    created_on:{
-        type: Date,
-        index: true,
-        default: Date.now()
-    }, 
+lat:{
+    type:String,
+    index: true,
+    default:""
+},
 
-    updated_on:{
-        type: String,
-        index: true,
-        default:""
-    },
+long:{
+    type:String,
+    index: true,
+    default:""
+},
 
-    previous_balance:{
-        type:String,
-        index: true,
-        default: "0.00"
-    },
+created_on:{
+    type: Date,
+    index: true,
+    default: Date.now
+},
 
-    current_balance:{
-        type:String,
-        index: true,
-        default:"0.00"
-    }
+updated_on:{
+    type: Date,
+    index: true,
+    default: Date.now
+},
 
+previous_balance:{
+    type: Number,
+    index: true,
+    default:0
+},
+
+current_balance:{
+    type: Number,
+    index: true,
+    default: 0
+}
 })
+
+const torTicketSchema = new mongoose.Schema({
+    portalData: [],
+    recordId: {
+        type: String,
+        index: true,
+        unique: true,
+    },
+    modId:{
+        type: String,
+        index: true,
+    },
+    fieldData: [torSchema],
+})
+
+const TORTicketModel = mongoose.model('TORTicketRecords', 
+torTicketSchema
+);
+
+export default TORTicketModel;

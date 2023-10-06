@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { BsMenuButtonWide, BsFillPersonFill, BsFillCarFrontFill, BsTruck, BsFillPeopleFill, BsJournalBookmark, BsJournalBookmarkFill, BsEnvelopeAt, BsShieldCheck, BsPersonFillLock, BsPersonVcard, BsHeadset, BsPersonWorkspace, BsFiles } from 'react-icons/bs';
+import { BsCurrencyExchange, BsEmojiDizzyFill, BsFileEarmarkTextFill, BsFillClipboardCheckFill, BsFillCreditCardFill, BsFillExclamationTriangleFill, BsFillFileEarmarkBarGraphFill, BsFillFuelPumpFill, BsFillMapFill, BsFillSignpostFill, BsListTask, BsMenuButtonWide, BsPersonWorkspace, BsTicketPerforated, BsTicketPerforatedFill } from 'react-icons/bs';
 import NavList, { ProfileBoxList } from "./NavList";
 import NotificationBell from "./NotificationBell";
 interface NavBarProps {
@@ -24,18 +24,9 @@ interface IUserInformation{
         
         {id: 1, pageName: "Dashboard", url: "/dashboard", iconUrl: <BsMenuButtonWide />},
         {id: 2, pageName: "Employee", url: "/employee", iconUrl: <BsPersonWorkspace />},
-        {id: 3, pageName: "TOR Records", url: "/tor", iconUrl: <BsFiles />},
-        // {id: 3, pageName: "Client", url: "/client", iconUrl: <BsFillPersonFill />},
-        // {id: 4, pageName: "Driver", url: "/driver", iconUrl: <BsFillCarFrontFill />},
-        // {id:5, pageName: "Rider", url:"/rider", iconUrl:<BsTruck />},
-        // {id:6, pageName: "Distributor/Retailer", url:"/distributor", iconUrl: <BsFillPeopleFill />},
-        // {id:7, pageName: "Accounting System", url:"/accounting-system", iconUrl: <BsJournalBookmark /> },
-        // {id:8, pageName: "KYC" , url:"/kyc", iconUrl: <BsJournalBookmarkFill />},
-        // {id:9, pageName: "Email Template", url:"/email-template" , iconUrl: <BsEnvelopeAt />},
-        // {id:10, pageName: "Privacy Policy", url :"/privacy-policy", iconUrl: <BsShieldCheck />},
-        // {id:11, pageName: "Admin/Sub-Admin Controller", url :"/admin-controller", iconUrl: <BsPersonFillLock />},
-        // {id:12, pageName: "Admin Activity", url : "/admin-activity", iconUrl: <BsPersonVcard />},
-        // {id:13, pageName: "Support" , url :"/support", iconUrl: <BsHeadset />}
+        {id: 3, pageName: "Direction", url: "/direction", iconUrl: <BsFillMapFill />},
+        {id: 4, pageName: "MasterCard", url :"/mastercard", iconUrl: <BsFillCreditCardFill />}
+      
     ]
 
     const ProfileDropdown = [
@@ -50,8 +41,12 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
     
 
     const navigate = useNavigate();
+
     const location = useLocation();
+
     const [activePage, setActivePage] = useState<string>("");
+
+    const [torIsOpen , setTorIsOpen] = useState(false);
 
     const [userInformation, setUserInformation] = useState(UserInformation)
 
@@ -63,9 +58,6 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
 
     const  [isOpenProfileBox, setIsOpenProfileBox] = useState(false);
 
-    function handleLogOut (){
-    
-    }
    
         
     function handleBtnProfileBox() : any{
@@ -75,8 +67,9 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
     useEffect( () =>{
 
         return () => {}
-    },[userInformation, isOpenProfileBox,isBurgerClicked])
-   
+    },[userInformation, isOpenProfileBox,isBurgerClicked,torIsOpen])
+
+  
     
     return(
         <>
@@ -84,23 +77,24 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
   <div className="px-3 py-3 lg:px-5 lg:pl-3">
     <div className="flex items-center justify-between">
       <div className="flex items-center justify-start">
-        <button onClick ={() => setIsBurgerClicked(!isBurgerClicked)}data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+        <button onClick ={() => setIsBurgerClicked(!isBurgerClicked)}data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600">
             <span className="sr-only">Open sidebar</span>
             <svg className="w-6 h-6" aria-hidden="false" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
             </svg>
          </button>
          
-             <a href= "#" className="flex ml-2 md:mr-24">
-                <span className="self-center text-white text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Dashboard Management</span>
+             <a href= "#" className="no-underline flex ml-2 md:mr-24">
+                <span className="self-center text-white text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">FILIPAY / DLTB</span>
              </a>
          
         
       </div>
     
-    
+      {/* <h1 className="text-white">{lastPart?.toUpperCase()}</h1> */}
 
 <div className="z-50 flex items-center relative ml-3">
+
 <NotificationBell />
   <div>
     
@@ -121,6 +115,8 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
           </p>
         </div>
         <ul className="py-1" role="none">
+
+
           {ProfileDropdown.map((list) => {
             return (
               <ProfileBoxList
@@ -131,6 +127,8 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
               />
             );
           })}
+
+      
         </ul>
       </div>
     )}
@@ -143,9 +141,9 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
 </nav>
 
 <aside id="logo-sidebar" className= {isBurgerClicked ? ("fixed top-0 left-0 z-40 w-64 h-screen pt-0 transition-transform -translate-x-full bg-primary border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-gray-700") : ("fixed top-0 left-0 z-40 w-64 h-screen pt-0 bg-primary border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-gray-700")} aria-label="Sidebar">
-   <div className="h-full px-0 m1 pb-4 overflow-y-auto bg-gradient-to-b from-blue-900 to-[#161d6f] dark:bg-primary">
+   <div className="h-full mt-4 px-0 m1 pb-4 overflow-y-auto bg-gradient-to-b from-blue-900 to-[#161d6f] dark:bg-primary">
      <div className="mt-20"></div>
-      <ul className="space-y-2 font-medium">
+      <ul className="space-y-2 font-medium p-0">
 
         {NavBarPages.map((page) =>{
           return(
@@ -161,6 +159,46 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
          </>
           ) 
         })}
+
+        
+<li>
+
+            <button type="button" className="flex items-center w-full p-2 text-base text-neutral-100 transition duration-75 rounded-lg group hover:bg-indigo-950 mt-4" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" onClick={() => setTorIsOpen(!torIsOpen)}>
+            <div className="mr-4"></div>
+                 <BsFillFileEarmarkBarGraphFill className ="text-2xl" />
+                  <span className="flex-1 ml-3 text-left whitespace-nowrap text-2xl ">TOR</span>
+                  <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+            </button>
+            <ul id="dropdown-example" className= {`py-2 space-y-2 ${torIsOpen ? "" : "hidden"}`}>
+                  <li>
+                    
+                     <a href="/tormain" className="no-underline flex items-center w-full p-2 text-neutral-100 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-950 text-2xl mt-4"><BsFileEarmarkTextFill className ="mr-4" />Main</a>
+                  </li>
+                  <li>
+                     <a href="/torticket" className="no-underline flex items-center w-full p-2 text-neutral-100 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-950 dark:text-white text-2xl mt-4"> <BsTicketPerforatedFill className ="mr-4" /> Ticket</a>
+                  </li>
+                  <li>
+                     <a href="/torfuel" className="no-underline flex items-center w-full p-2 text-neutral-100 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-950 dark:text-white text-2xl mt-4"> <BsFillFuelPumpFill className ="mr-4"/> Fuel</a>
+                  </li>
+                  <li>
+                     <a href="/torremittance" className="no-underline flex items-center w-full p-2 text-neutral-100 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-950 dark:text-white text-2xl mt-4"><BsCurrencyExchange className ="mr-4"/> Remittance</a>
+                  </li>
+                  <li>
+                     <a href="/tortrip" className="no-underline flex items-center w-full p-2 text-neutral-100 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-950 dark:text-white text-2xl mt-4"><BsFillSignpostFill className ="mr-4"/> Trip</a>
+                  </li>
+                  <li>
+                     <a href="/torinspection" className="no-underline flex items-center w-full p-2 text-neutral-100 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-950 dark:text-white text-2xl mt-4"><BsFillClipboardCheckFill className ="mr-4" /> Inspection</a>
+                  </li>
+                  <li>
+                     <a href="/torviolation" className="no-underline flex items-center w-full p-2 text-neutral-100 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-950 dark:text-white text-2xl mt-4"> <BsFillExclamationTriangleFill className="mr-4"/> Violation</a>
+                  </li> 
+                  <li>
+                     <a href="/tortrouble" className="no-underline flex items-center w-full p-2 text-neutral-100 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-950 dark:text-white text-2xl mt-4"><BsEmojiDizzyFill className ="mr-4"/> Trouble</a>
+                  </li>
+            </ul>
+         </li>
       </ul>
    </div>
 </aside>

@@ -70,7 +70,7 @@ export async function GetAllEmployeesFilipayServerController(request : Request, 
             message: "Error in getting all employees: "+e,
             dateTime: responseDate,
         }],
-        response:[{}]
+        response:{}
  });
     }
 
@@ -88,7 +88,7 @@ export async function AddNewEmployeeFilipayServerController(request : Request, r
             message: "OK",
             dateTime: responseDate,
         }],
-        response:[{}]
+        response:{}
  });
 
     }catch(e){
@@ -97,7 +97,7 @@ export async function AddNewEmployeeFilipayServerController(request : Request, r
             message: "Error in generating token: "+e,
             dateTime: responseDate,
         }],
-        response:[{}]
+        response:{}
  });
     }
 
@@ -118,7 +118,7 @@ export async function UpdateEmployeeFilipayServerController(request: Request, re
                 message: "Modifying employee failed!",
                 dateTime: responseDate,
             }],
-            response:[{}]
+            response:{}
      });
 
         }
@@ -128,7 +128,7 @@ export async function UpdateEmployeeFilipayServerController(request: Request, re
             message: "OK",
             dateTime: responseDate,
         }],
-        response:[{}]
+        response:{}
         });
     }catch(e){
         response.status(500).json({messages : [{
@@ -136,7 +136,7 @@ export async function UpdateEmployeeFilipayServerController(request: Request, re
             message: "Error in modifying employee information: "+e,
             dateTime: responseDate,
         }],
-        response:[{}]
+        response:{}
  });
     }
 

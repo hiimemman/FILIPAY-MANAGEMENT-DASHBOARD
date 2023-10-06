@@ -14,7 +14,7 @@ export async function GenerateAuthorizationTokenConroller(request: Request, resp
             message: "You have received a fresh token: ",
             dateTime: responseDate,
         }],
-        response:[{token: AuthorizationToken}]
+        response:{token: AuthorizationToken}
     });
 
     }catch(e){
@@ -23,7 +23,7 @@ export async function GenerateAuthorizationTokenConroller(request: Request, resp
             message: "Error in generating token: "+e,
             dateTime: responseDate,
         }],
-        response:[{}]
+        response:{}
     });
   }
 }
@@ -49,7 +49,7 @@ export async function DeleteAuthorizationTokenController(request : Request, resp
             message: "Error in deleting token: "+e,
             dateTime: responseDate,
         }],
-        response:[{}]
+        response:{}
         });
     }
 }

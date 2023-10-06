@@ -18,7 +18,7 @@ export async function CreateNewCardUserController(request : Request, response : 
                 message: "Creating new card user failed!",
                 dateTime: responseDate,
             }],
-            response:[{}]
+            response:{}
      });
             
         }else{
@@ -28,7 +28,7 @@ export async function CreateNewCardUserController(request : Request, response : 
                 message: "Successfully created a new card!",
                 dateTime: responseDate,
             }],
-            response:[{}]
+            response:{}
             });
         }
         
@@ -39,7 +39,7 @@ export async function CreateNewCardUserController(request : Request, response : 
             message: "Creating new card failed! error: "+e,
             dateTime: responseDate,
         }],
-        response:[{}]
+        response:{}
  });
 
     }

@@ -6,6 +6,6 @@ import { CheckTokenMiddleware } from "../middlewares/CheckTokenMiddleware";
 
 const CardUserRouter = Router();
 
-CardUserRouter.post('/filipay/carduser',CheckTokenMiddleware, CreateNewCardUserController)
+CardUserRouter.post('/carduser',CheckTokenMiddleware, CreateNewCardUserController)
 
 export default CardUserRouter;

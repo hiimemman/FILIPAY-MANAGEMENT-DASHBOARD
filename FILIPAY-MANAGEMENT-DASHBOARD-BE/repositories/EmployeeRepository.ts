@@ -3,6 +3,8 @@ import EmployeeModel from "../models/EmployeeModel";
 
 export interface IEmployeeData {
 
+    portalData: [],
+
     recordId: number,
 
     modId: number,
@@ -70,10 +72,13 @@ class EmployeeRepository{
 
         try{
            const newEmployee = {
-                "recordId": "",
-                 "modId" : "",
-                 "fieldData" : data
+                "portalData" : data.portalData,
+                "recordId": data.recordId,
+                 "modId" : data.modId,
+                 "fieldData" : data.fieldData
             }
+
+            // console.log(data);
             const employeeData = new EmployeeModel(newEmployee);
             const employeeDataSave = await employeeData.save();
 
@@ -88,11 +93,24 @@ class EmployeeRepository{
 
     }
 
+    async UpdateEmployeePerEMPNo ( data : IEmployeeData) {
+    
+        try{
+
+            const employee = await EmployeeModel.findOneAndReplace({'fieldData[0].empNo' : data.fieldData.empNo}, data )
+
+        }catch(e){
+            console.error("Error in employee repository: "+e);
+            return true;
+        }
+
+    }
+
     async GetEmployeePerEmpNo (id : number) : Promise<any>{
 
         try{
  
-            const employee = await EmployeeModel.findOne({'fieldData.empNo' :id})
+            const employee = await EmployeeModel.findOne({'fieldData[0].empNo' :id})
 
             return employee
         }catch(e){
@@ -102,7 +120,7 @@ class EmployeeRepository{
 
     }
 
-    async CheckIfEmployeePerNoExist(id : number) : Promise<boolean>{
+    async CheckIfEmployeePerNoExist(id : IEmployeeData) : Promise<boolean>{
         try{
             let ifAllowedToAdd = false;
             const employee = await EmployeeModel.findOne({'fieldData.empNo' :id})
@@ -117,20 +135,22 @@ class EmployeeRepository{
                 return false;
             }
         }catch(e){
+            
             console.error("Repository error: "+e);
             return false;
         }
     }
 
 
-    async UpdateEmployeePerEmpNo(data : IEmployeeData) : Promise<boolean>{
+    async UpdateEmployeePerEmpNo(data : any) : Promise<boolean>{
        
         try{
             
-            const updateEmployeeData = await EmployeeModel.findOneAndUpdate({'fieldData.empNo' :data.fieldData.empNo}, data)
+            const updateEmployeeData = await EmployeeModel.findOneAndUpdate({'fieldData.empNo' :data.empNo}, data)
 
             return true;
         }catch(e){
+           
             console.error("Repository error: "+e);
             return false;
         }

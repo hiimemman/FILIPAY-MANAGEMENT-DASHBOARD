@@ -14,7 +14,7 @@ export async function GetAllEmployeesFromOtherServer(){
 
         employeeToken = requestForToken;
 
-        const getEmployeeFromOtherServer = axios.post("https://fms.dltbbus.com.ph/fmi/data/v1/databases/dltb%20company%20database/layouts/dltb_id/_find")
+        const getEmployeeFromOtherServer = axios.post("https://fms.dltbbus.com.ph/fmi/data/v1/databases/dltb%20company%20database/layouts/dltb_id/_find");
 
         
         // ALWAYS END THE SESSION PLEASE GIVE SOME LOVE TO OUR SERVERS
@@ -29,3 +29,5 @@ export async function GetAllEmployeesFromOtherServer(){
     }
     
 }
+
+

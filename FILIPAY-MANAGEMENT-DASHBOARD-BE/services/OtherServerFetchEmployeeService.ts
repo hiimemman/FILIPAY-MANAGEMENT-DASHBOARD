@@ -28,9 +28,12 @@ export async function GetAllEmployeesFromOtherServer(token : string | boolean){
         //////////////////////////////
 
         requestGetEmployeeFromOtherServer.data.response.data.map( async(employee : any) =>{
-            ////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////
             /// Check if the employee was already in the database before inserting it to prevent data duplication
-            /////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // console.log(employee)
+            
             const AllowedToAddTheUser = await employeeRepo.CheckIfEmployeePerNoExist(employee.fieldData.empNo);
 
             if(AllowedToAddTheUser){

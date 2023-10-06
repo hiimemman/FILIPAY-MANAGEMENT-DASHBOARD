@@ -4,15 +4,15 @@ import { authorizationTokenRepo } from "../repositories/AuthorizationTokenReposi
 export async function CheckTokenMiddleware(request: Request, response: Response, next: NextFunction){
 
     try{    
-
+        // console.log(request.headers)
         let token = request.headers.authorization?.replace("Bearer ","");
-        console.log(token?.trim())
         const isAuth = await authorizationTokenRepo.CheckIfExistToken(token)
 
         if(isAuth){
             next();
         }else{
-            return response.status(401).json("Unauthorized please provide a valid token");
+            console.log("Someone tries to connect to our protected routes without token / cookie")
+            return response.status(401).json()
         }
 
     }catch(e){

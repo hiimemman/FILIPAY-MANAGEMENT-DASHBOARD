@@ -11,8 +11,14 @@ try{
    
 }
 
-export function GetCurrentDate() : moment.Moment{
+export function GetCurrentDate() : moment.Moment | unknown{
 
+    try{
     return moment();
+}catch(e){
+    console.error("Error in generating current date: "+e)
+    return e;
+}
+    
 
 }
