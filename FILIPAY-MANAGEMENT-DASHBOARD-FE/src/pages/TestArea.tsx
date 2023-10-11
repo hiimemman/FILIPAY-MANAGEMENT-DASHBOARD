@@ -1,5 +1,7 @@
+import { BsMenuAppFill } from "react-icons/bs";
 import Carousel from "../components/Carousel";
 import CarouselLinks from "../components/CarouselLinks";
+import DashboardCard from "../components/DashboardCard";
 import HeaderCard from "../components/HeaderCard";
 import PaginationTest from "../components/PaginationTest";
 
@@ -7,12 +9,9 @@ import PaginationTest from "../components/PaginationTest";
 export default function TestArea(){
 
     return(
-        <>
-        {/* <Carousel />
-     <HeaderCard title ={"Test"}/> */}
-     {/* <PaginationTest /> */}
-     {/* <CarouselLinks /> */}
-        </>
+       <>
+        <DashboardCard cardNumber={32} title="TEST" key={1} icon={<BsMenuAppFill />} />
+       </>
     )
 
 }

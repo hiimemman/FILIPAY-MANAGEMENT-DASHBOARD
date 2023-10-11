@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import { useState } from 'react'
 import LogIn from "./pages/LogIn";
 import TestLogin from "./pages/TestLogin";
-import TestArea from "./pages/TestArea";
 import { Dashboard } from "./pages/Dashboard";
 import { Client } from "./pages/Client";
 // import  './styles/LogIn.css'
@@ -17,6 +15,7 @@ import { TORInspection } from "./pages/TORInspection";
 import { TORTrip } from "./pages/TORTrip";
 import { TORViolation } from "./pages/TORViolation";
 import { TORTrouble } from "./pages/TORTrouble";
+import TestArea from "./pages/TestArea";
 
 function App() {
  
@@ -28,8 +27,10 @@ function App() {
     
           <Router>
             <Routes>
+              
               <Route path ="/testarea" element ={<LogIn /> }/>
               <Route path ="/dashboard" element ={<Dashboard />} />
+              <Route path ="/test" element ={<TestArea />}/> 
               <Route path="/client" element ={<Client />} />
               <Route path ="/login" element = {<TestLogin />} />
               <Route path ="/test" element = {<TestLogin />}/>

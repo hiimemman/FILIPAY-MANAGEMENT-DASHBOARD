@@ -78,3 +78,36 @@ export async function CreateTORFuelController(request: Request, response : Respo
     }
 
 }
+
+
+export async function GetAllTORFuelController(request: Request, response: Response){
+
+    const responseDate = GetCurrentDateSTR();
+
+    try{
+
+        const torFuels = await TORFuelService.GetAllTORFuelService();
+
+        response.status(200).json({messages : [{
+            code: "0",
+            message: "OK",
+            dateTime: responseDate,
+        }],
+        response: torFuels
+        });
+
+    }catch(e){
+
+        console.error("Error in sync get all tor fuel controller: "+e);
+
+        response.status(500).json({messages : [{
+            code: "212",
+            message: "Error in getting employees: "+e,
+            dateTime: responseDate,
+            }],
+            response: {}
+        })
+
+    }
+
+}

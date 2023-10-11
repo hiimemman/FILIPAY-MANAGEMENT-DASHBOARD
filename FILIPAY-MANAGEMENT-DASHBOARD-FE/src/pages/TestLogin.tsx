@@ -2,7 +2,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/LogIn.css'
 import { FormEvent } from 'react';
-import DefaultButton from '../components/Buttons'
 import Carousel from '../components/Carousel';
 import {useState, useEffect} from 'react';
 import axios from 'axios';

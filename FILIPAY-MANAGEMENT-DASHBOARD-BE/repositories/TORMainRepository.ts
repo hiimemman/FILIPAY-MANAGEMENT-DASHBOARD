@@ -207,7 +207,7 @@ class TORMainRepository{
 
         }catch(e){
             console.error("Error in tor main repository: "+e)
-            return false;
+            return {};
         }
 
 
@@ -255,6 +255,7 @@ class TORMainRepository{
             return false;
         }
     }
+
 
     
 

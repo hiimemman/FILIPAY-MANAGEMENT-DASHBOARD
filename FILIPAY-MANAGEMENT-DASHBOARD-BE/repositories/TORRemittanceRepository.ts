@@ -74,6 +74,22 @@ class TORRemittanceRepository{
 
     }
 
+
+    async GetAllTORRemittance(){
+    
+        try{
+            
+            const torRemittance = await TORRemittanceModel.find({});
+
+            return torRemittance;
+
+        }catch(e){
+            console.error("Error in get all tor remittance repository: "+e);
+            return false;
+        }
+
+    }
+
 }
 
 export default new TORRemittanceRepository();

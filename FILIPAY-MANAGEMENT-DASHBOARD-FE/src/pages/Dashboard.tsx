@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import Paper from "../components/Paper";
 import axios from "axios";
 import DashboardCard from "../components/DashboardCard";
-import { BsFileEarmarkTextFill } from "react-icons/bs";
+import { BsCurrencyExchange, BsEmojiDizzyFill, BsFileEarmarkTextFill, BsFillClipboardCheckFill, BsFillExclamationTriangleFill, BsFillFuelPumpFill, BsFillSignpostFill, BsTicketPerforatedFill } from "react-icons/bs";
 
 export function Dashboard() : JSX.Element{
 
@@ -100,13 +100,13 @@ export function Dashboard() : JSX.Element{
             })
 
             const response = await request.data;
-
-            console.log(response.response.length)
+            console.log("TOR REMITTANCE")
+            console.log(response)
 
             setTorRemittance(response.response.length)
 
         }catch(e){
-            console.error("Error in getting all the tor main: "+e)
+            console.error("Error in getting all the tor remittance: "+e)
         }
 
     }
@@ -202,13 +202,13 @@ export function Dashboard() : JSX.Element{
 
     useEffect(() =>{
 
+        GetAllTORRemittance();
+
         GetAllTORMain();
 
         GetAllTORTicket();
 
         GetAllTORFuel();
-
-        GetAllTORRemittance();
 
         GetAllTORTrip();
 
@@ -228,23 +228,24 @@ export function Dashboard() : JSX.Element{
         <NavBar>
            <HeaderCard title="DASHBOARD"/>
         
-           <div className="py-8 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+           <div className="py-8 mt-4 p-0 sm:py-16 lg:px-6">
+  <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-12 md:space-y-0">
+
           
-          <DashboardCard icon ={<BsFileEarmarkTextFill />} title="TOR MAIN" cardNumber={torMainNumber}/>
+          <DashboardCard icon ={<BsFileEarmarkTextFill /> } title="TOR MAIN" cardNumber={torMainNumber}/>
 
-          <DashboardCard icon ={<BsFileEarmarkTextFill />} title="TOR TICKET" cardNumber={torTicket}/>
+          <DashboardCard icon ={<BsTicketPerforatedFill /> } title="TOR TICKET" cardNumber={torTicket}/>
 
-          <DashboardCard icon ={<BsFileEarmarkTextFill />} title="TOR FUEL" cardNumber={torFuel}/>
+          <DashboardCard icon ={<BsFillFuelPumpFill /> } title="TOR FUEL" cardNumber={torFuel}/>
 
-          <DashboardCard icon ={<BsFileEarmarkTextFill />} title="TOR REMITTANCE" cardNumber={torRemittance}/>
+          <DashboardCard icon ={<BsCurrencyExchange /> } title="TOR REMITTANCE" cardNumber={torRemittance}/>
 
-          <DashboardCard icon ={<BsFileEarmarkTextFill />} title="TOR TRIP" cardNumber={torTrip}/>
-          <DashboardCard icon ={<BsFileEarmarkTextFill />} title="TOR INSPECTION" cardNumber={torInspection}/>
+          <DashboardCard icon ={<BsFillSignpostFill /> } title="TOR TRIP" cardNumber={torTrip}/>
+          <DashboardCard icon ={<BsFillClipboardCheckFill />} title="TOR INSPECTION" cardNumber={torInspection}/>
 
-          <DashboardCard icon ={<BsFileEarmarkTextFill />} title="TOR VIOLATION" cardNumber={torViolation}/>
+          <DashboardCard icon ={<BsFillExclamationTriangleFill />} title="TOR VIOLATION" cardNumber={torViolation}/>
           
-          <DashboardCard icon ={<BsFileEarmarkTextFill />} title="TOR TROUBLE" cardNumber={torTrouble}/>
+          <DashboardCard icon ={<BsEmojiDizzyFill />} title="TOR TROUBLE" cardNumber={torTrouble}/>
         </div>
 
     

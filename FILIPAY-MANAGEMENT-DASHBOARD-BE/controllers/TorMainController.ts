@@ -92,7 +92,8 @@ export async function GetAllTORMainController(request: Request, response: Respon
 export async function CreateNewTORMAINController(request: Request, response: Response) {
     const responseDate = GetCurrentDateSTR();
     try{
-      const newTorMain = await TORMainService.CreateTORMAinToOtherServerService(request.body);
+        console.log(request.body)
+      const newTorMain = await TORMainService.CreateTORMainService(request.body);
 
         response.status(200).json({messages : [{
             code: "0",
@@ -114,6 +115,38 @@ export async function CreateNewTORMAINController(request: Request, response: Res
         response:[{}]
         })
     
+    }
+
+}
+
+export async function SyncTorMainController( request: Request, response : Response){
+
+    const responseDate = GetCurrentDateSTR();
+
+    try{
+
+        const syncTorMain = await TORMainService.SyncTORMainService();
+
+        response.status(200).json({messages : [{
+            code: "0",
+            message: "OK",
+            dateTime: responseDate,
+        }],
+        response: syncTorMain
+        });
+
+    }catch(e){
+
+        console.error("Error in tor main controller: "+ e)
+        
+        response.status(500).json({messages : [{
+        code: "212",
+        message: "Error in adding employees: "+e,
+        dateTime: responseDate,
+        }],
+        response:[{}]
+        })
+
     }
 
 }

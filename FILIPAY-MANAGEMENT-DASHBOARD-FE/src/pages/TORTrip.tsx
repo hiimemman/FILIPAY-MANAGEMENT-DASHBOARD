@@ -7,6 +7,7 @@ import { Button, LinearProgress } from "@mui/material";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import axios from 'axios';
 import HeaderCard from "../components/HeaderCard";
+import SyncIcon from '@mui/icons-material/Sync';
 
 const columns: GridColDef[] = [
   
@@ -131,21 +132,11 @@ const columns: GridColDef[] = [
   },
 
   { 
-    field: 'departed_time', 
-    headerName: 'DEPARTED TIME', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
-
-  { 
     field: 'departed_dispatcher_id', 
     headerName: 'DEPARTED DISPATCHER ID', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 220,
     headerAlign: 'center',
     align: 'center',
   },
@@ -155,7 +146,7 @@ const columns: GridColDef[] = [
     headerName: 'DEPARTED DISPATCHER', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 240,
     headerAlign: 'center',
     align: 'center',
   },
@@ -185,7 +176,7 @@ const columns: GridColDef[] = [
     headerName: 'ARRIVED DISPATCHER ID', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 250,
     headerAlign: 'center',
     align: 'center',
   },
@@ -195,7 +186,7 @@ const columns: GridColDef[] = [
     headerName: 'ARRIVED DISPATCHER', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 210,
     headerAlign: 'center',
     align: 'center',
   },
@@ -255,7 +246,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE ATM PASSENGER', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 270,
     headerAlign: 'center',
     align: 'center',
   },
@@ -265,7 +256,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE ATM BAGGAGE', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 270,
     headerAlign: 'center',
     align: 'center',
   },
@@ -275,7 +266,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET COUNT ATM PASSENGER', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 250,
     headerAlign: 'center',
     align: 'center',
   },
@@ -285,7 +276,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET COUNT ATM BAGGAGE', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 230,
     headerAlign: 'center',
     align: 'center',
   },
@@ -295,7 +286,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE PUNCH', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 220,
     headerAlign: 'center',
     align: 'center',
   },
@@ -315,7 +306,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE PUNCH PASSENGER', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 290,
     headerAlign: 'center',
     align: 'center',
   },
@@ -325,7 +316,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE PUNCH BAGGAGE', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 270,
     headerAlign: 'center',
     align: 'center',
   },
@@ -334,7 +325,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET COUNT PUNCH PASSENGER', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 270,
     headerAlign: 'center',
     align: 'center',
   },
@@ -344,7 +335,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET COUNT PUNCH BAGGAGE', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 270,
     headerAlign: 'center',
     align: 'center',
   },
@@ -354,7 +345,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE CHARTER', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 220,
     headerAlign: 'center',
     align: 'center',
   },
@@ -364,7 +355,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET COUNT CHARTER', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 240,
     headerAlign: 'center',
     align: 'center',
   },
@@ -374,7 +365,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE WAYBILL', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 240,
     headerAlign: 'center',
     align: 'center',
   },
@@ -384,7 +375,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET COUNT WAYBILL', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 230,
     headerAlign: 'center',
     align: 'center',
   },
@@ -394,7 +385,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE CARD', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 200,
     headerAlign: 'center',
     align: 'center',
   },
@@ -414,7 +405,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET REVENUE RESERVED', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 220,
     headerAlign: 'center',
     align: 'center',
   },
@@ -424,7 +415,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET COUNT RESERVED', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 220,
     headerAlign: 'center',
     align: 'center',
   },
@@ -434,7 +425,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET AMOUNT CANCELLED', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 230,
     headerAlign: 'center',
     align: 'center',
   },
@@ -444,7 +435,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET COUNT CANCELLED', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 240,
     headerAlign: 'center',
     align: 'center',
   },
@@ -454,7 +445,7 @@ const columns: GridColDef[] = [
     headerName: 'TICKET AMOUNT PASSES', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 220,
     headerAlign: 'center',
     align: 'center',
   },
@@ -524,7 +515,7 @@ const columns: GridColDef[] = [
     headerName: 'DEPARTURE TIMESTAMP', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 240,
     headerAlign: 'center',
     align: 'center',
   },
@@ -556,25 +547,6 @@ const columns: GridColDef[] = [
    
   ];
 
-  //Toolbar
-function CustomToolbar() {
-
-    return (<>
-        
-        <GridToolbarContainer>
-          {/* <Button variant="text"  color ="success" startIcon = {<PersonAddIcon />}> Add</Button> */}
-          <GridToolbarColumnsButton />
-          <GridToolbarFilterButton />
-          <GridToolbarDensitySelector />
-          <GridToolbarExport />
-          <GridToolbarQuickFilter />
-        </GridToolbarContainer>
-        {/* <AddEmployee  open ={formOpenType === 'employee'}/>  */}
-      </>
-      );
-
-}   
-
 
 
 export function TORTrip(){
@@ -582,6 +554,8 @@ export function TORTrip(){
     const [tableRows, setTableRows] = useState(rows)
 
     const [isLoading , setIsLoading] = useState(false);
+
+    const [isSyncing, setIsSyncing] = useState(false);
 
     useEffect(() =>{
       
@@ -642,6 +616,67 @@ export function TORTrip(){
     useEffect(() =>{
 
     },[tableRows])
+
+       
+    async function SyncData(){
+      setIsSyncing(true);
+      try{
+
+        const request = await axios.get(`${import.meta.env.VITE_BASE_URL}/tor/main`,{
+          headers :{
+              Authorization : `Bearer ${import.meta.env.VITE_TOKEN}`
+          }
+      })
+          
+          const response = await request.data;
+
+          if(response.messages[0].code === '0'){
+
+            setIsSyncing(false);
+           
+          }
+
+          setIsSyncing(false);
+      }catch(e){
+        console.error("Error in syncing data: "+e);
+        setIsSyncing(false);
+      }
+
+    } 
+
+      //Toolbar
+function CustomToolbar() {
+
+  const spinnerStyle = {
+    animation: 'spin 1s linear infinite',
+  };
+
+  const keyframesStyle = `
+    @keyframes spin {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+  `;
+
+
+  
+
+  return (
+    <>
+     
+      <GridToolbarContainer>
+        {isSyncing ?  (<style>{keyframesStyle}</style>) : null}
+        <Button variant="text"  onClick ={SyncData} color="success" startIcon={<SyncIcon style={spinnerStyle} />}>{isSyncing ? "SYNCING..." : "SYNC"}</Button>
+        <GridToolbarColumnsButton />
+        <GridToolbarFilterButton />
+        <GridToolbarDensitySelector />
+        <GridToolbarExport />
+        <GridToolbarQuickFilter />
+      </GridToolbarContainer>
+    </>
+  );
+
+}   
 
     return(<>
 

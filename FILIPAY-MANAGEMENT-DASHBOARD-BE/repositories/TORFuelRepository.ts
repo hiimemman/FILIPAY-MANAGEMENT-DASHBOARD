@@ -51,6 +51,20 @@ class TORFuelRepository{
 
     }
 
+    async GetAllTOURFuel(){
+        
+        try{
+
+            const torFuel = await TORFuelModel.find({});
+
+            return torFuel;
+
+        }catch(e){
+            console.error("Error in get all tor fuel repository: "+e);
+            return {};
+        }
+
+    }
 }
 
 export default new TORFuelRepository();

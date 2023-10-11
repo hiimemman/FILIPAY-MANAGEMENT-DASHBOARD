@@ -76,3 +76,32 @@ export async function CreateTORRemittanceController(request: Request, response: 
     }
 
 }
+
+export async function GetAllRemittanceController(request : Request, response : Response){
+
+    const responseDate =  GetCurrentDateSTR();
+
+    try{
+
+        const torRemittance = await TORRemittanceService.GetAllTORRemittance();
+
+        response.status(200).json({messages : [{
+            code: "0",
+            message: "OK",
+            dateTime: responseDate,
+            }],
+            response: torRemittance
+        })
+
+    }catch(e){
+        console.error("Error in get all tor remittance controller: "+e);
+        response.status(500).json({messages : [{
+            code: "212",
+            message: "Error in creating tor ticket: "+e,
+            dateTime: responseDate,
+            }],
+            response: {}
+        })
+    }
+
+}

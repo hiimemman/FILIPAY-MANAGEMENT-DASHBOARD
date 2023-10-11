@@ -243,7 +243,8 @@ class TORMainService{
                   ///IF UUID PER TORMAIN EXIST IN DATABASE REPLACE THAT DATA WITH SPECIFIC UUID ELSE INSERT IT TO A NEW ONE
                     if(JSON.stringify(await this.SearchTORMainService(torMain.fieldData.UUID)) === '[]'){
 
-                        await this.CreateTORMainService(torMain)
+                        const request = await this.CreateTORMainService(torMain)
+                        console.log("This is request"+request)
                     }else{
        
                         await this.UpdateTORMainService(torMain)
@@ -264,11 +265,23 @@ class TORMainService{
     }
 
 
-    async CreateTORMAinToOtherServerService(tor: ITORMAIN){
+    async CreateTORMAinToOtherServerService(tor: any){
         
         try{
-
-            if(await this.SearchTORMainService(tor.fieldData.UUID)){
+        //     let torTemp : any = {};
+        //     for (const prop in tor) {
+        //       if (prop !== '_id') {
+        //         torTemp[prop] = tor[prop];
+        //       }
+        //     }
+        
+        let torTemp = JSON.parse(JSON.stringify(tor));
+        delete torTemp._id;
+        console.log("NEW TOR")
+        console.log(torTemp)
+        const newTor = {
+          "fieldData": torTemp
+        }
                 const token = await TORGenerateSessionService();
         
                 const config = {
@@ -278,17 +291,12 @@ class TORMainService{
                 }
                 
                 const addNewTorInOtherServer = await axios.post("https://s037817.fmphost.com/fmi/data/v1/databases/filipay_torData/layouts/tor_main/records",
-                tor, config)
-                
+                newTor, config)
                 const responseAddNewTorInOtherServer = await addNewTorInOtherServer.data;
           
                 const deleteToken = await TOREndSessionService(token);
     
                 return true;
-            }else{
-                return false;
-            }
-
 
         }catch(e){
             console.error("Error in creating new tor main to other service: "+e);
@@ -297,11 +305,19 @@ class TORMainService{
    
     }
 
-    async CreateTORMainService(tor : ITORMAIN) {
+    async CreateTORMainService(fieldData : ITORMAIN) {
 
         try{
-            const newTorMain = TORMainRepository.CreateNewTORMain(tor);
+            const torMain ={
+                portalData: [],
+                recordId: "",
+                modId: "",
+                fieldData: fieldData.fieldData,
+            }
+
+            const newTorMain = TORMainRepository.CreateNewTORMain(torMain);
             return true;
+
         }catch(e){
             console.error("Error in create tor main service: "+e)
             return false;
@@ -374,7 +390,79 @@ class TORMainService{
 
     }
 
-    // async UpdateTORMainToOtherSever()
+
+    async SyncTORMainService(){
+
+        try{
+
+            const torMains = await TORMainRepository.GetAllTORMain();
+        
+            const torsMains = await torMains?.map(async (torMain : any) => {
+                if(torMain.fieldData[0]){
+                    if(await this.CheckIfUUIDAllowedToInsertService(torMain)){
+
+                      const request =  await this.CreateTORMAinToOtherServerService(torMain.fieldData[0]);
+
+                    }else{
+                        console.log("UUID NOT ALLOWED TO INSERT")
+                    }
+                }else{
+                    console.log("SHET");
+                }
+               
+             
+            })
+
+        }catch(e){
+            console.error("Error in sync tor main service: "+e);
+            return {status: 500, message: "Error in sync tor main service: "+e};
+        }
+
+    }
+
+
+
+    async CheckIfUUIDAllowedToInsertService(UUID : string){
+    
+        try{
+
+            const token = await TORGenerateSessionService();
+
+            const config = {
+                headers :{
+                    Authorization : `Bearer ${token}`
+                }
+            }
+            
+            const bodyParameters = {
+                "query": [{"UUID": UUID}]
+            }
+
+            const url = `https://s037817.fmphost.com/fmi/data/v1/databases/filipay_torData/layouts/tor_main/_find`;
+
+            const request = await axios.post(url , bodyParameters, config);
+
+            const deleteToken = await TOREndSessionService(token);
+
+            const response = request.data;
+
+            if(response.response.dataInfo.returnedCount < 0){
+                return true;
+            }else{
+                return false;
+            }
+            
+       
+
+
+        }catch(e){
+
+            return true;
+
+        }
+
+    }
+
 
 }
 

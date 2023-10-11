@@ -106,6 +106,21 @@ class TORFuelService{
 
     }
 
+    async GetAllTORFuelService(){
+    
+        try{
+
+            const torFuels = await TORFuelRepository.GetAllTOURFuel();
+
+            return torFuels;
+
+        }catch(e){
+            console.error("Error in get all tor fuel service: "+e);
+
+            return {status: 500, message: e};
+        }
+
+    }
 
 
 

@@ -72,6 +72,21 @@ class TORRemittanceService{
         }
     }
 
+    async GetAllTORRemittance(){
+
+        try{
+
+            const torRemittance = await TORRemittanceRepository.GetAllTORRemittance();
+
+            return torRemittance;
+
+        }catch(e){
+
+            console.error("Error in get all tor remittance service: "+e);
+            return false;
+        }
+
+    }
     /////////////////////////////////////
  
     async GenerateSession(){

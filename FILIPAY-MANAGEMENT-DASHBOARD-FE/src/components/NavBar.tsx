@@ -25,7 +25,7 @@ interface IUserInformation{
         {id: 1, pageName: "Dashboard", url: "/dashboard", iconUrl: <BsMenuButtonWide />},
         {id: 2, pageName: "Employee", url: "/employee", iconUrl: <BsPersonWorkspace />},
         {id: 3, pageName: "Direction", url: "/direction", iconUrl: <BsFillMapFill />},
-        {id: 4, pageName: "MasterCard", url :"/mastercard", iconUrl: <BsFillCreditCardFill />}
+        {id: 4, pageName: "Master Card", url :"/mastercard", iconUrl: <BsFillCreditCardFill />}
       
     ]
 
@@ -73,21 +73,29 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
     
     return(
         <>
-        <nav className="fixed top-0 z-50 w-full bg-gradient-to-r from-blue-900 to-[#161d6f] border-b border-gray-200 dark:bg-primary dark:border-gray-700">
+        <nav className="fixed top-0 z-50 w-full bg-gradient-to-r from-blue-900 to-[#161d6f] border-b border-gray-200 ">
   <div className="px-3 py-3 lg:px-5 lg:pl-3">
     <div className="flex items-center justify-between">
       <div className="flex items-center justify-start">
-        <button onClick ={() => setIsBurgerClicked(!isBurgerClicked)}data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600">
+        <button onClick ={() => setIsBurgerClicked(!isBurgerClicked)}data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-gray-200">
             <span className="sr-only">Open sidebar</span>
             <svg className="w-6 h-6" aria-hidden="false" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
             </svg>
          </button>
          
-             <a href= "#" className="no-underline flex ml-2 md:mr-24">
+             {/* <a href= "#" className="no-underline flex ml-2 md:mr-24">
                 <span className="self-center text-white text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">FILIPAY / DLTB</span>
-             </a>
-         
+             </a> */}
+             
+             <div className="bg-white w-full rounded-lg p-2 shadow-md">
+            <img
+              className="w-full h-16 rounded-lg "
+              src="http://filipworks.com/fmd/assets/Filipay-logo.png"
+              alt="logo"
+            />
+        </div>
+
         
       </div>
     
@@ -140,9 +148,9 @@ export default function NavBar ({children} : NavBarProps) : JSX.Element{
   </div>
 </nav>
 
-<aside id="logo-sidebar" className= {isBurgerClicked ? ("fixed top-0 left-0 z-40 w-64 h-screen pt-0 transition-transform -translate-x-full bg-primary border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-gray-700") : ("fixed top-0 left-0 z-40 w-64 h-screen pt-0 bg-primary border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-gray-700")} aria-label="Sidebar">
+<aside id="logo-sidebar" className= {isBurgerClicked ? ("fixed top-0 left-0 z-40 w-64 h-screen pt-0 transition-transform -translate-x-full bg-primary border-r border-gray-200 sm:translate-x-0 ") : ("fixed top-0 left-0 z-40 w-64 h-screen pt-0 bg-primary border-r border-gray-200 sm:translate-x-0 ")} aria-label="Sidebar">
    <div className="h-full mt-4 px-0 m1 pb-4 overflow-y-auto bg-gradient-to-b from-blue-900 to-[#161d6f] dark:bg-primary">
-     <div className="mt-20"></div>
+     <div className="mt-32"></div>
       <ul className="space-y-2 font-medium p-0">
 
         {NavBarPages.map((page) =>{

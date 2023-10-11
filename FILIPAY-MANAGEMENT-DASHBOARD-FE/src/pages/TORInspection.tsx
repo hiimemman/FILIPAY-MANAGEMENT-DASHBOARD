@@ -7,6 +7,7 @@ import { Button, LinearProgress } from "@mui/material";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import axios from 'axios';
 import HeaderCard from "../components/HeaderCard";
+import SyncIcon from '@mui/icons-material/Sync';
 
 const columns: GridColDef[] = [
   
@@ -110,25 +111,25 @@ const columns: GridColDef[] = [
     align: 'center',
   },
 
-  { 
-    field: 'inspector_emp_no', 
-    headerName: 'INSPECTOR EMP NO', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'inspector_emp_no', 
+  //   headerName: 'INSPECTOR EMP NO', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'inspector_emp_name', 
-    headerName: 'INSPECTOR EMP NAME', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'inspector_emp_name', 
+  //   headerName: 'INSPECTOR EMP NAME', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
   { 
     field: 'onboard_time', 
@@ -181,55 +182,55 @@ const columns: GridColDef[] = [
     align: 'center',
   },
 
-  { 
-    field: 'passenger_count_paid', 
-    headerName: 'PASSENGER COUNT PAID', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'passenger_count_paid', 
+  //   headerName: 'PASSENGER COUNT PAID', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 280,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'passenger_count_with_pass', 
-    headerName: 'PASSENGER COUNT WITH PASS', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'passenger_count_with_pass', 
+  //   headerName: 'PASSENGER COUNT WITH PASS', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 270,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'passenger_count_transfer', 
-    headerName: 'PASSENGER COUNT TRANSFER', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'passenger_count_transfer', 
+  //   headerName: 'PASSENGER COUNT TRANSFER', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'trip_no', 
-    headerName: 'TRIP NO', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'trip_no', 
+  //   headerName: 'TRIP NO', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'inspector_emp_no', 
-    headerName: 'INSPECTOR EMP NO', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'inspector_emp_no', 
+  //   headerName: 'INSPECTOR EMP NO', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
   { 
     field: 'inspector_emp_name', 
@@ -242,92 +243,92 @@ const columns: GridColDef[] = [
   },
 
 
-  { 
-    field: 'onboard_time', 
-    headerName: 'ONBOARD TIME', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'onboard_time', 
+  //   headerName: 'ONBOARD TIME', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'onboard_place', 
-    headerName: 'ONBOARD PLACE', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'onboard_place', 
+  //   headerName: 'ONBOARD PLACE', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'onboard_km_post', 
-    headerName: 'ONBOARD KM POST', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'onboard_km_post', 
+  //   headerName: 'ONBOARD KM POST', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'ticket_no_beginning', 
-    headerName: 'TICKET NO BEGINNING', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'ticket_no_beginning', 
+  //   headerName: 'TICKET NO BEGINNING', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'ticket_no_ending', 
-    headerName: 'TICKET NO ENDING', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'ticket_no_ending', 
+  //   headerName: 'TICKET NO ENDING', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'passenger_count_paid', 
-    headerName: 'PASSENGER COUNT PAID', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'passenger_count_paid', 
+  //   headerName: 'PASSENGER COUNT PAID', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'passenger_count_with_pass', 
-    headerName: 'PASSENGER COUNT WITH PASS', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'passenger_count_with_pass', 
+  //   headerName: 'PASSENGER COUNT WITH PASS', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
-  { 
-    field: 'passenger_count_transfer', 
-    headerName: 'PASSENGER COUNT TRANSFER', 
-    headerClassName: 'super-app-theme--header',
-    editable: false,
-    width: 180,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // { 
+  //   field: 'passenger_count_transfer', 
+  //   headerName: 'PASSENGER COUNT TRANSFER', 
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: false,
+  //   width: 180,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
 
   { 
     field: 'passenger_count_total', 
     headerName: 'PASSENGER COUNT TOTAL', 
     headerClassName: 'super-app-theme--header',
     editable: false,
-    width: 180,
+    width: 240,
     headerAlign: 'center',
     align: 'center',
   },
@@ -398,24 +399,6 @@ const columns: GridColDef[] = [
    
   ];
 
-  //Toolbar
-function CustomToolbar() {
-
-    return (<>
-        
-        <GridToolbarContainer>
-          {/* <Button variant="text"  color ="success" startIcon = {<PersonAddIcon />}> Add</Button> */}
-          <GridToolbarColumnsButton />
-          <GridToolbarFilterButton />
-          <GridToolbarDensitySelector />
-          <GridToolbarExport />
-          <GridToolbarQuickFilter />
-        </GridToolbarContainer>
-        {/* <AddEmployee  open ={formOpenType === 'employee'}/>  */}
-      </>
-      );
-
-}   
 
 
 
@@ -424,6 +407,8 @@ export function TORInspection(){
     const [tableRows, setTableRows] = useState(rows)
 
     const [isLoading , setIsLoading] = useState(false);
+
+    const [isSyncing, setIsSyncing] = useState(false);
 
     useEffect(() =>{
       
@@ -484,6 +469,66 @@ export function TORInspection(){
     useEffect(() =>{
 
     },[tableRows])
+
+    async function SyncData(){
+      setIsSyncing(true);
+      try{
+
+        const request = await axios.get(`${import.meta.env.VITE_BASE_URL}/tor/main`,{
+          headers :{
+              Authorization : `Bearer ${import.meta.env.VITE_TOKEN}`
+          }
+      })
+          
+          const response = await request.data;
+
+          if(response.messages[0].code === '0'){
+
+            setIsSyncing(false);
+           
+          }
+
+          setIsSyncing(false);
+      }catch(e){
+        console.error("Error in syncing data: "+e);
+        setIsSyncing(false);
+      }
+
+    } 
+
+      //Toolbar
+function CustomToolbar() {
+
+  const spinnerStyle = {
+    animation: 'spin 1s linear infinite',
+  };
+
+  const keyframesStyle = `
+    @keyframes spin {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+  `;
+
+
+  
+
+  return (
+    <>
+     
+      <GridToolbarContainer>
+        {isSyncing ?  (<style>{keyframesStyle}</style>) : null}
+        <Button variant="text"  onClick ={SyncData} color="success" startIcon={<SyncIcon style={spinnerStyle} />}>{isSyncing ? "SYNCING..." : "SYNC"}</Button>
+        <GridToolbarColumnsButton />
+        <GridToolbarFilterButton />
+        <GridToolbarDensitySelector />
+        <GridToolbarExport />
+        <GridToolbarQuickFilter />
+      </GridToolbarContainer>
+    </>
+  );
+
+} 
 
     return(<>
 

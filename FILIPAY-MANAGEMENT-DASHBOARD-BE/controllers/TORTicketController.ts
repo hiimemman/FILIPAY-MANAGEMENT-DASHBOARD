@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { GetCurrentDateSTR } from "../common/GetCurrentDate";
 import TORTicketServices from "../services/TORTicketServices";
 
-export async function GetAllTicket(request: Request, response: Response){
+export async function GetAllTicketController(request: Request, response: Response){
     
     const responseDate = GetCurrentDateSTR();
     
@@ -72,9 +72,9 @@ export async function CreateTorTicketController(request: Request, response: Resp
 
     try{
 
-        const createTicket = await TORTicketServices.CreateTORTicketServices(request.body);
+        const insertTicketToDb = await TORTicketServices.InsertTORTickeToOurDBServices(request.body);
 
-        if(createTicket.status === 0){
+        if(insertTicketToDb.status === 0){
             response.status(200).json({messages : [{
                 code: "0",
                 message: "OK",
@@ -106,6 +106,37 @@ export async function CreateTorTicketController(request: Request, response: Resp
             response: {}
         })
 
+    }
+
+}
+
+export async function SyncTORTicketController(request: Request, response: Response){
+
+    const responseDate = GetCurrentDateSTR();
+
+    try{
+
+        const syncTorTicket = await TORTicketServices.SyncTORTicketService();
+
+        response.status(200).json({messages : [{
+            code: "0",
+            message: "OK",
+            dateTime: responseDate,
+        }],
+        response: syncTorTicket
+        });
+
+    }catch(e){
+
+        console.error("Error in controller: "+e);
+
+        response.status(500).json({messages : [{
+            code: "212",
+            message: "Error in creating tor ticket: "+e,
+            dateTime: responseDate,
+            }],
+            response: {}
+        })
     }
 
 }

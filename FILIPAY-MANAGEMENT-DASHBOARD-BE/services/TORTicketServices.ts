@@ -102,19 +102,50 @@ class TORTicketServices{
 
     }
 
-    async InsertTORTickeToOurDBServices(torTicket : ITORTicket ){
+    async SyncTORTicketService(){
 
         try{
 
-            const newTicket = new TORTicketModel(torTicket)
+            const torTickets = await this.GetAllTORTicketService();
 
-            const saveTicket = newTicket.save();
+            if(torTickets !== false){
+            
+                const insertTorTickets = await torTickets?.map(async (torTicket : any) =>{
 
-            return true;
+                    await this.CreateTORTicketServices(torTicket);
+
+                })
+            }
+
+            
+            // const token = await this.GenerateSession();
+
+            // const torTickets = await this.GetAllTORTicketService();
+
+            // console.log(torTickets)
+
+            // const deleteToke = await this.EndSession(token);
+
+        }catch(e){
+
+            console.error("Error in syncing tor ticket service: "+e);
+            return {status: 1, message: ""+e};
+
+        }
+
+    }
+
+    async  InsertTORTickeToOurDBServices(torTicket : ITORTicket ){
+
+        try{
+
+            const saveTicket = await TORTicketRepository.CreateTORTicket(torTicket);
+            
+            return {status: 0, message: saveTicket};
 
         }catch(e){
             console.error("Error in inserting ticket in database service"+e);
-            return false;
+            return {status: 1, message: ""+e};
         }
         
     }
@@ -180,15 +211,19 @@ class TORTicketServices{
         
     }
 
-    async CreateTORTicketServices(torTicket : ITORTicket){
+    async CreateTORTicketServices(torTicket : any){
 
         try{
 
-            // const checkIfUUIDExist = await this.CheckIfUUIDExistService(torTicket.fieldData.UUID);
-
-            const checkIfUUIDExist =  0;
-
-
+            let torTemp = JSON.parse(JSON.stringify(torTicket.fieldData[0]));
+            delete torTemp._id;
+            console.log("NEW TOR")
+            console.log(torTemp)
+            const newTor = {
+              "fieldData": torTemp
+            }
+          
+            console.log(newTor)
 
                 const token = await this.GenerateSession();
 
@@ -198,7 +233,7 @@ class TORTicketServices{
                     }
                 }
            
-                const requestCreateNewTORTicket = await axios.post("https://s037817.fmphost.com/fmi/data/v1/databases/filipay_torData/layouts/tor_tickets/records", torTicket, config);
+                const requestCreateNewTORTicket = await axios.post("https://s037817.fmphost.com/fmi/data/v1/databases/filipay_torData/layouts/tor_tickets/records", newTor, config);
     
                 const responseTORTicketFromOtherServer = await requestCreateNewTORTicket.data;
     

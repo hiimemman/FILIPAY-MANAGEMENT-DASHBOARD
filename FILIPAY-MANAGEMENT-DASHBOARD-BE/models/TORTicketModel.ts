@@ -176,14 +176,21 @@ const torTicketSchema = new mongoose.Schema({
     recordId: {
         type: String,
         index: true,
-        unique: true,
+        default:"",
+        unique: false
     },
     modId:{
         type: String,
         index: true,
+        default:""
     },
     fieldData: [torSchema],
 })
+
+torTicketSchema.pre("save", function (next) {
+    this.recordId = this._id.toString();
+    next();
+});
 
 const TORTicketModel = mongoose.model('TORTicketRecords', 
 torTicketSchema

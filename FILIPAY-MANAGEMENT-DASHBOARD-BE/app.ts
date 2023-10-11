@@ -97,10 +97,10 @@ app.use(urlBackend, TORTroubleRouter);
 // DATABASE CONNECTION
 ////////////////////////
 
-const url ='mongodb://localhost:27017/filipay'
-
+const url : string  = process.env.DB_CONNECTION_STRING? process.env.DB_CONNECTION_STRING : '';
 connectToMongoDB(url);
 
+console.log(url);
 ////////////////////
 // ESTABLISH
 ///////////////////

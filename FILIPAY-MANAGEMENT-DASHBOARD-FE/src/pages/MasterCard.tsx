@@ -1,12 +1,14 @@
 import NavBar from "../components/NavBar";
 import Paper from "../components/Paper";
 import { DataGrid, GridColDef, GridRowsProp, GridToolbarContainer, GridToolbarColumnsButton, GridToolbarFilterButton, GridToolbarDensitySelector, GridToolbarExport, GridToolbarQuickFilter} from '@mui/x-data-grid';
-import {useEffect, useId, useState} from 'react'
+import {useEffect, useState} from 'react'
 import Box from '@mui/material/Box';
-import { Button, LinearProgress } from "@mui/material";
+import {  LinearProgress } from "@mui/material";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import axios from 'axios';
 import HeaderCard from "../components/HeaderCard";
+
+
 
 const columns: GridColDef[] = [
   
@@ -25,13 +27,15 @@ const columns: GridColDef[] = [
   { 
     field: 'balance', 
     headerName: 'BALANCE', 
+    
     flex: 1,
         minWidth: 0,
     headerClassName: 'super-app-theme--header',
     headerAlign: 'center',
     align: 'center',
-    editable: true,
-   
+    editable: false,
+    valueFormatter: (params) => `₱ ${params.value}`
+    
   },
 
 

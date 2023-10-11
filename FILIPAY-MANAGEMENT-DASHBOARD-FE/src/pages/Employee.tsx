@@ -10,23 +10,23 @@ import { Avatar,  LinearProgress, Stack } from "@mui/material";
 import axios from 'axios';
 
 const columns: GridColDef[] = [
-  {
-    field: 'idPicture',
-    headerName: "ID Picture",
-    width: 180,
-    headerClassName: 'super-app-theme--header',
-    editable: true,
-    headerAlign: 'center',
-    align: 'center',
-    renderCell: (params) => {
+  // {
+  //   field: 'idPicture',
+  //   headerName: "ID Picture",
+  //   width: 180,
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: true,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  //   renderCell: (params) => {
       
-      return (
-        <>
-          <Avatar src={params.value} />
-        </>
-      );
-    }
-  },
+  //     return (
+  //       <>
+  //         <Avatar src={params.value} />
+  //       </>
+  //     );
+  //   }
+  // },
   { 
     field: 'lastName', 
     headerName: 'LAST NAME', 
@@ -113,15 +113,15 @@ const columns: GridColDef[] = [
     align: 'center',
   },
   
-  {
-    field: 'idSignature',
-    headerName: "ID Signature",
-    width: 180,
-    headerClassName: 'super-app-theme--header',
-    editable: true,
-    headerAlign: 'center',
-    align: 'center',
-  },
+  // {
+  //   field: 'idSignature',
+  //   headerName: "ID Signature",
+  //   width: 180,
+  //   headerClassName: 'super-app-theme--header',
+  //   editable: true,
+  //   headerAlign: 'center',
+  //   align: 'center',
+  // },
   {
     field: 'JTI_RFID',
     headerName: "JTI RFID",
@@ -133,7 +133,7 @@ const columns: GridColDef[] = [
   },
   {
     field: 'accessPrivileges',
-    headerName: "Access Privileges",
+    headerName: "ACCESS PRIVILEGES",
     width: 180,
     headerClassName: 'super-app-theme--header',
     editable: true,
@@ -143,8 +143,8 @@ const columns: GridColDef[] = [
 
   {
     field: 'JTI_RFID_RequestDate',
-    headerName: "JTI RFID Request Date",
-    width: 180,
+    headerName: "JTI RFID REQUEST DATE",
+    width: 270,
     headerClassName: 'super-app-theme--header',
     editable: true,
     headerAlign: 'center',
